@@ -1,0 +1,117 @@
+@charset "UTF-8";
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+:focus, :active {
+    outline: none;
+}
+a:focus, a:active {
+    outline: none;
+}
+nav, footer, header, aside {
+    display: block;
+}
+html, body {
+    height: 100%;
+    width: 100%;
+    font-size: 100%;
+    line-height: 1;
+    font-size: 14px;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+}
+input, button, textarea {
+    font-family: inherit;
+}
+input::-ms-clear {
+    display: none;
+}
+button,a {
+    cursor: pointer;
+    background: none;
+}
+button::-moz-focus-inner {
+    padding: 0;
+    border: 0;
+}
+a, a:visited {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: none;
+}
+ul li {
+    list-style: none;
+}
+img {
+    max-width: 100%;
+    height: auto;
+    border: none;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-size: inherit;
+}
+
+/* reset Settings */
+
+.wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 100px;
+}
+.tickets{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.tickets__card{
+    width: 330px;
+    border: 2px solid #E27B30;
+    border-radius: 15px;
+    background: #2B2C2D;
+    padding-bottom: 20px;
+    box-shadow: 4px 1px 5px 2px #0000009a;
+    color: white;
+    margin: 10px;
+}
+.tickets__inner {
+    padding: 0 43px;
+}
+.tickets__wrap{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.tickets__wrap .tickets__item{
+    margin: 0 5px;
+    flex-grow: 1;
+}
+.tickets__title {
+    border-bottom: 1px solid #E27B30;
+    padding: 26px 0;
+    font-size: 23px;
+    margin-bottom: 27px;
+    text-align: center;
+}
+.tickets__item-title{
+    font-size: 20px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+.tickets__text{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: #E27B30;
+    height: 50px;
+    border: 1px solid #E27B30;
+    border-radius: 15px;
+    margin-bottom: 10px;
+    padding: 0 20px;
+}
