@@ -137,9 +137,10 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 100px;
 }
 /* goods */
-/* .goods{
-
-} */
+.goods{
+    display: flex;
+    flex-wrap: wrap;
+}
 .goods__card{
     width: 330px;
     border: 2px solid #E27B30;
