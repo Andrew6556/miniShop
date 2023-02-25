@@ -112,20 +112,32 @@ let goods = [
     },
 ]
 
-let num_buy = 0;
-// document.querySelector(".goods__btn-hover").addEventListener("click",a);
-document.querySelector(".goods__btn-hover").onclick = () => {
-    console.log("1")
-    localStorage.setItem("cart", "товар");
-};
-function a() {
-    // console.log(document.querySelector(".goods__card"));
-    // ++num_buy;
-    // document.querySelector(".navbar__num-buy").innerText = num_buy;
-    // console.log("1")
-    // localStorage.setItem("cart", "товар");
+let num_buy    = 0,
+    list_goods = document.querySelectorAll(".goods__card");
+
+
+for (let i = 0; i < list_goods.length; ++i){
+    // console.log(list_goods[i])
+    if (list_goods[i].querySelector(".goods__title").innerHTML == document.getElementById("buy1").innerHTML){
+        console.log("1");
+        // let c= list_goods[i].outerHTML
+        // let div_basket     = localStorage.setItem("product","99999");
+        localStorage.setItem("product",list_goods[i].outerHTML)
+
+        // let clone_product  = list_goods[i];
+
+        // div_basket.appendChild(clone_product.cloneNode(true));
+    }
 }
 
+document.querySelector(".goods__btn-hover").addEventListener("click",a);
+
+function a() {
+    ++num_buy;
+    console.log(document.getElementById("buy1").innerHTML)
+    document.querySelector(".navbar__num-buy").innerText = num_buy;
+    console.log("1")
+}
 
 
 

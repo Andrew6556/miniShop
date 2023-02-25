@@ -1,17 +1,8 @@
 "use strict";
 
+let div_product = localStorage.getItem("product");
 
-let buy = localStorage.getItem("cart");
+let div_basket = document.querySelector(".basket");
+div_basket.innerHTML = localStorage.getItem("product");
 
-let div_buy = document.querySelector(".basket");
-// div_buy.innerText = buy;
-// console.log(buy);
-div_buy.innerText = buy;
-
-// window.onload = function(){
-//     // if (div_buy == null){
-//     //     div_buy.innerText = buy;
-//     // }else{
-//     //     div_buy.innerText = 1;
-//     // }
-// }
+// div_basket.appendChild(div_product);
