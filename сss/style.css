@@ -224,6 +224,6 @@ h1, h2, h3, h4, h5, h6 {
     color: #E27B30;
 }
 /* basket */
-.basket__buy{
+.basket{
     display: flex;
 }

@@ -125,9 +125,8 @@ function add_div(){
 
 function increase_number_purchases(){
     // При клике увеличиваем число покупок
-    console.log(num_buy);
     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-
+    console.log(num_buy);
 }
 function pass_class(div_product){
     // При клике получаем обьект дочернего класса где он был сделан
@@ -135,30 +134,10 @@ function pass_class(div_product){
     div_product.querySelector(".goods__btn-hover").disabled = true;
     console.log(div_product)
     list_goods.push(div_product.outerHTML)
-    // localStorage.setItem("product", [div_product.outerHTML, div_product.outerHTML]);
+    div_product.onclick = null
 }
 
 
-// function a() {
-//     // for (let i = 0; i < list_goods.length; ++i){
-//     //     // console.log(list_goods[i])
-//     //     if (list_goods[i].querySelector(".goods__title").innerHTML == document.getElementById(`buy ${i}`).innerHTML){
-//     //         // console.log(list_goods[i].querySelector(".goods__title"));
-//             console.log(event.target);
-//     //         localStorage.setItem("product",list_goods[i].outerHTML);
-//                 localStorage.setItem("product","q")
-//     //         break
-//     //     }
-//     // }
-// }
-
-
-// function a() {
-//     ++num_buy;
-//     console.log(document.getElementById("buy1").innerHTML)
-//     document.querySelector(".navbar__num-buy").innerText = num_buy;
-//     console.log("1")
-// }
 
 
 
@@ -202,4 +181,3 @@ function pass_class(div_product){
 
 
     
-// console.log(goodsDom)
