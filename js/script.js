@@ -111,76 +111,6 @@ let goods = [
         price:25000
     },
 ]
-let data_users = [{name:"andrey",password:111}],
-    list_goods = [],
-    num_buy    = 0;
-
-let username,
-    user_password;
-
-
-console.log(document.querySelectorAll(".goods__card"))
-
-
-
-function add_div(){
-    // при клике передаем массив купленных товаров
-    localStorage.setItem("product", list_goods);
-}
-
-function increase_number_purchases(){
-    // При клике увеличиваем число покупок
-    document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-}
-function pass_class(div_product){
-    // При клике получаем обьект дочернего класса, где он был сделан
-    div_product.querySelector(".goods__btn-hover").innerText = "Продано";
-    div_product.querySelector(".goods__btn-hover").disabled = true;
-    list_goods.push(div_product.outerHTML)
-    div_product.onclick = null
-}
-function authorization(){
-    alert("Подвердите ваши данные");
-    alert("Вы впервые у нас?");
-    let user_choice = +prompt("Введите 1 если да; 2 если нет")
-    loop:while(user_choice == 1 || user_choice == 2){
-        let authorization_name     = prompt("Введите ваше имя"),
-            authorization_password = prompt("Введите ваш пароль");
-        if (user_choice == 1){
-            if (username == authorization_name && user_password == authorization_password){
-                console.log(username)
-                break
-            }
-        }else if (user_choice == 2){
-            for (let data of data_users){
-                if (authorization_name == data.name && authorization_password == data.password){
-                    console.log("красавчик");
-                    document.querySelector(".navbar__btn-signIn").style.display = 'none';
-                    document.querySelector(".navbar__btn-registration").style.display = 'none';
-                    document.querySelector(".navbar__user-authorized").style.display = 'flex';
-                    break loop;
-                }
-            }
-            alert("Допусчена ошибка")
-        }
-    }
-}
-
-function registration(){
-    // регистрация
-    while(true){
-        let registration_name     = prompt("Введите ваше имя"),
-            registration_password = +prompt("Введите ваш пароль");
-        if (registration_name == "" || registration_password == ""){
-            alert("Вы ввели не все данные");
-        }else{
-            username = registration_name;
-            user_password = registration_password;
-            break
-        }
-    }
-}
-
 
 let goodsDom = document.querySelector(".goods");
 
@@ -224,4 +154,88 @@ for (let product of goods){
 
 
 
-    
+
+
+let data_users = [{name:"admin",password:666}],
+    list_goods = [],
+    num_buy    = 0,
+    link_click = document.querySelector(".goods__card").onclick;
+
+let username,
+    user_password;
+
+
+function enumeration_goods(click=null){
+    document.querySelectorAll(".goods__card").forEach(el =>{
+        // делаем покупку товаров не возможной
+        el.onclick = click;
+    })
+}
+
+enumeration_goods()
+
+
+function add_div(){
+    // при клике передаем массив купленных товаров
+    localStorage.setItem("product", list_goods);
+}
+function increase_number_purchases(){
+    // При клике увеличиваем число покупок
+    document.querySelector(".navbar__num-buy").innerText = ++num_buy;
+}
+function pass_class(div_product){
+    // При клике получаем обьект дочернего класса, где он был сделан
+    div_product.querySelector(".goods__btn-hover").innerText = "Продано";
+    div_product.querySelector(".goods__btn-hover").disabled = true;
+    list_goods.push(div_product.outerHTML)
+    div_product.onclick = null
+}
+function authorization(){
+    alert("Подвердите ваши данные");
+    alert("Вы впервые у нас?");
+    let user_choice = +prompt("Введите 1 если да; 2 если нет")
+    loop:while(user_choice == 1 || user_choice == 2){
+        let authorization_name     = prompt("Введите ваше имя"),
+            authorization_password = prompt("Введите ваш пароль");
+        if (user_choice == 1){
+            if (username == authorization_name && user_password == authorization_password){
+                data_users.push({name:username,password:user_password})
+                document.querySelector(".navbar__btn-signIn").style.display = 'none';
+                document.querySelector(".navbar__btn-registration").style.display = 'none';
+                document.querySelector(".navbar__user-authorized").style.display = 'flex';
+                enumeration_goods(link_click)
+                break loop
+            }else{
+                alert("Error в введенных данных")
+                break loop
+            }
+        }else if (user_choice == 2){
+            for (let data of data_users){
+                if (authorization_name == data.name && authorization_password == data.password){
+                    document.querySelector(".navbar__btn-signIn").style.display = 'none';
+                    document.querySelector(".navbar__btn-registration").style.display = 'none';
+                    document.querySelector(".navbar__user-authorized").style.display = 'flex';
+                    enumeration_goods(link_click)
+                    break loop;
+                }
+            }
+            alert("Error в введенных данных")
+            break loop;
+        }
+    }
+}
+
+function registration(){
+    // регистрация
+    while(true){
+        let registration_name     = prompt("Введите ваше имя"),
+            registration_password = +prompt("Введите ваш пароль");
+        if (registration_name == "" || registration_password == ""){
+            alert("Вы ввели не все данные");
+        }else{
+            username = registration_name;
+            user_password = registration_password;
+            break
+        }
+    }
+}
