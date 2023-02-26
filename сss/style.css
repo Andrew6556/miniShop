@@ -178,7 +178,7 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 30px;
 }
 .goods__inner {
-    padding: 0 43px;
+    padding: 0 23px;
 }
 .goods__wrap{
     display: flex;
@@ -193,7 +193,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .goods__title {
     border-bottom: 1px solid #E27B30;
-    padding: 26px 10px;
+    padding: 26px 15px;
     font-size: 23px;
     margin-bottom: 27px;
     text-align: center;
@@ -226,4 +226,5 @@ h1, h2, h3, h4, h5, h6 {
 /* basket */
 .basket{
     display: flex;
+    flex-wrap: wrap;
 }
