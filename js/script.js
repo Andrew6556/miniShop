@@ -113,41 +113,48 @@ let goods = [
 ]
 
 let num_buy    = 0,
-    list_goods = [];
-
-
-
+    list_goods = [],
+    username,
+    password;
 
 function add_div(){
+    // при клике передаем массив купленных товаров
     localStorage.setItem("product", list_goods);
 }
 
 function increase_number_purchases(){
     // При клике увеличиваем число покупок
     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-    console.log(num_buy);
 }
 function pass_class(div_product){
-    // При клике получаем обьект дочернего класса где он был сделан
+    // При клике получаем обьект дочернего класса, где он был сделан
     div_product.querySelector(".goods__btn-hover").innerText = "Продано";
     div_product.querySelector(".goods__btn-hover").disabled = true;
-    console.log(div_product)
     list_goods.push(div_product.outerHTML)
     div_product.onclick = null
 }
-
-
-
-
-
-
-
-
+function authorization(){
+    console.log(username)
+}
+function registration(){
+    // регистрация
+    while(true){
+        let registration_name     = prompt("Введите ваше имя"),
+            registration_password = +prompt("Введите ваш пароль");
+        if (registration_name == "" || registration_password == ""){
+            console.log("Вы ввели не все данные");
+        }else{
+            username = registration_name;
+            password = registration_password;
+            break
+        }
+    }
+}
 
 
 let goodsDom = document.querySelector(".goods");
-    
 
+// генерация данных из массива на html страниццу
 for (let product of goods){
     let productDiv = document.createElement('div');
     productDiv.classList.add("goods__block");
@@ -183,7 +190,6 @@ for (let product of goods){
                             </div>
                         </div>`;
     goodsDom.appendChild(productDiv);
-    // break
 }
 
 

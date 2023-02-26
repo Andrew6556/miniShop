@@ -142,6 +142,7 @@ h1, h2, h3, h4, h5, h6 {
 .goods{
     display: flex;
     flex-wrap: wrap;
+    align-items: center;
 }
 .goods__card{
     width: 330px;
@@ -193,7 +194,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .goods__title {
     border-bottom: 1px solid #E27B30;
-    padding: 26px 15px;
+    padding: 30px 15px;
     font-size: 23px;
     margin-bottom: 27px;
     text-align: center;
