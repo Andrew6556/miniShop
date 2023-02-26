@@ -113,11 +113,15 @@ let goods = [
 ]
 
 let num_buy    = 0,
-    list_goods = document.querySelectorAll(".goods__card");
+    list_goods = [];
 
 
 
 // document.querySelector(".goods__btn-hover").addEventListener("click", increase_number_purchases);
+
+function add_div(){
+    localStorage.setItem("product", list_goods);
+}
 
 function increase_number_purchases(){
     // При клике увеличиваем число покупок
@@ -129,8 +133,9 @@ function pass_class(div_product){
     // При клике получаем обьект дочернего класса где он был сделан
     div_product.querySelector(".goods__btn-hover").innerText = "Продано";
     div_product.querySelector(".goods__btn-hover").disabled = true;
-    console.log(div_product);
-    localStorage.setItem("product", div_product.outerHTML);
+    console.log(div_product)
+    list_goods.push(div_product.outerHTML)
+    // localStorage.setItem("product", [div_product.outerHTML, div_product.outerHTML]);
 }
 
 
