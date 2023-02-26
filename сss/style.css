@@ -95,14 +95,17 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     align-items: center;
 }
-
+.navbar__add-product{
+    display: none;
+    font-size: 20px;
+    margin: 0 10px;
+}
 .navbar__btn-registration{
     border: 2px solid white;
     margin:0  40px;
 }
 .navbar__user-authorized{
     display: none;
-    /* display: flex; */
     justify-content: center;
     align-items: center;
     border-radius:20px ;

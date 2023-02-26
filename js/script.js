@@ -167,14 +167,16 @@ let username,
 
 function enumeration_goods(click=null){
     document.querySelectorAll(".goods__card").forEach(el =>{
-        // делаем покупку товаров не возможной
+        // делаем покупку товаров не возможной или наоборот
         el.onclick = click;
     })
 }
 
 enumeration_goods()
 
-
+function add_product(){
+    // добавление new товара
+}
 function add_div(){
     // при клике передаем массив купленных товаров
     localStorage.setItem("product", list_goods);
@@ -190,6 +192,13 @@ function pass_class(div_product){
     list_goods.push(div_product.outerHTML)
     div_product.onclick = null
 }
+function overwriting_styles_login(){
+    // переазапись стилей при авторизации
+    document.querySelector(".navbar__btn-signIn").style.display = 'none';
+    document.querySelector(".navbar__btn-registration").style.display = 'none';
+    document.querySelector(".navbar__user-authorized").style.display = 'flex';
+    document.querySelector(".navbar__username").innerText = 'username';
+}
 function authorization(){
     alert("Подвердите ваши данные");
     alert("Вы впервые у нас?");
@@ -199,10 +208,8 @@ function authorization(){
             authorization_password = prompt("Введите ваш пароль");
         if (user_choice == 1){
             if (username == authorization_name && user_password == authorization_password){
-                data_users.push({name:username,password:user_password})
-                document.querySelector(".navbar__btn-signIn").style.display = 'none';
-                document.querySelector(".navbar__btn-registration").style.display = 'none';
-                document.querySelector(".navbar__user-authorized").style.display = 'flex';
+                data_users.push({name:username,password:user_password});
+                overwriting_styles_login()
                 enumeration_goods(link_click)
                 break loop
             }else{
@@ -212,9 +219,11 @@ function authorization(){
         }else if (user_choice == 2){
             for (let data of data_users){
                 if (authorization_name == data.name && authorization_password == data.password){
-                    document.querySelector(".navbar__btn-signIn").style.display = 'none';
-                    document.querySelector(".navbar__btn-registration").style.display = 'none';
-                    document.querySelector(".navbar__user-authorized").style.display = 'flex';
+                    overwriting_styles_login()
+                    if (authorization_name == "admin" && authorization_password == 666){
+                        // если пользователь админ то даем ему его полномочия
+                        document.querySelector(".navbar__add-product").style.display = 'block';
+                    }
                     enumeration_goods(link_click)
                     break loop;
                 }
