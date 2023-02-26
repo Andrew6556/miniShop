@@ -111,11 +111,17 @@ let goods = [
         price:25000
     },
 ]
-
-let num_buy    = 0,
+let data_users = [{name:"andrey",password:111}],
     list_goods = [],
-    username,
-    password;
+    num_buy    = 0;
+
+let username,
+    user_password;
+
+
+console.log(document.querySelectorAll(".goods__card"))
+
+
 
 function add_div(){
     // при клике передаем массив купленных товаров
@@ -134,18 +140,42 @@ function pass_class(div_product){
     div_product.onclick = null
 }
 function authorization(){
-    console.log(username)
+    alert("Подвердите ваши данные");
+    alert("Вы впервые у нас?");
+    let user_choice = +prompt("Введите 1 если да; 2 если нет")
+    loop:while(user_choice == 1 || user_choice == 2){
+        let authorization_name     = prompt("Введите ваше имя"),
+            authorization_password = prompt("Введите ваш пароль");
+        if (user_choice == 1){
+            if (username == authorization_name && user_password == authorization_password){
+                console.log(username)
+                break
+            }
+        }else if (user_choice == 2){
+            for (let data of data_users){
+                if (authorization_name == data.name && authorization_password == data.password){
+                    console.log("красавчик");
+                    document.querySelector(".navbar__btn-signIn").style.display = 'none';
+                    document.querySelector(".navbar__btn-registration").style.display = 'none';
+                    document.querySelector(".navbar__user-authorized").style.display = 'flex';
+                    break loop;
+                }
+            }
+            alert("Допусчена ошибка")
+        }
+    }
 }
+
 function registration(){
     // регистрация
     while(true){
         let registration_name     = prompt("Введите ваше имя"),
             registration_password = +prompt("Введите ваш пароль");
         if (registration_name == "" || registration_password == ""){
-            console.log("Вы ввели не все данные");
+            alert("Вы ввели не все данные");
         }else{
             username = registration_name;
-            password = registration_password;
+            user_password = registration_password;
             break
         }
     }

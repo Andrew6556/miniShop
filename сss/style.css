@@ -68,8 +68,10 @@ h1, h2, h3, h4, h5, h6 {
 .btn{
     width: 180px;
     padding: 10px 0;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
-    color: black;
+    font-weight: 500;
+    color: white;
 }
 
 .wrapper{
@@ -142,6 +144,7 @@ h1, h2, h3, h4, h5, h6 {
 .goods{
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
     align-items: center;
 }
 .goods__card{
@@ -154,7 +157,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
     background: #2B2C2D;
     box-shadow: 4px 1px 5px 2px #0000009a;
-    margin: 10px;
+    margin: 10px 0;
 }
 .goods__card:hover .goods__hover-buy{
     visibility: visible;
