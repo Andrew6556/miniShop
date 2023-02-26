@@ -117,22 +117,37 @@ let num_buy    = 0,
 
 
 
+// document.querySelector(".goods__btn-hover").addEventListener("click", increase_number_purchases);
 
-document.querySelector(".goods__btn-hover").addEventListener("click",a);
+function increase_number_purchases(){
+    // При клике увеличиваем число покупок
+    console.log(num_buy);
+    document.querySelector(".navbar__num-buy").innerText = ++num_buy;
 
-
-function a() {
-    // for (let i = 0; i < list_goods.length; ++i){
-    //     // console.log(list_goods[i])
-    //     if (list_goods[i].querySelector(".goods__title").innerHTML == document.getElementById(`buy ${i}`).innerHTML){
-    //         // console.log(list_goods[i].querySelector(".goods__title"));
-            console.log(event.target);
-    //         localStorage.setItem("product",list_goods[i].outerHTML);
-                localStorage.setItem("product","q")
-    //         break
-    //     }
-    // }
 }
+function pass_class(div_product){
+    // При клике получаем обьект дочернего класса где он был сделан
+    div_product.querySelector(".goods__btn-hover").innerText = "Продано";
+    div_product.querySelector(".goods__btn-hover").disabled = true;
+    console.log(div_product);
+    localStorage.setItem("product", div_product.outerHTML);
+}
+
+
+// function a() {
+//     // for (let i = 0; i < list_goods.length; ++i){
+//     //     // console.log(list_goods[i])
+//     //     if (list_goods[i].querySelector(".goods__title").innerHTML == document.getElementById(`buy ${i}`).innerHTML){
+//     //         // console.log(list_goods[i].querySelector(".goods__title"));
+//             console.log(event.target);
+//     //         localStorage.setItem("product",list_goods[i].outerHTML);
+//                 localStorage.setItem("product","q")
+//     //         break
+//     //     }
+//     // }
+// }
+
+
 // function a() {
 //     ++num_buy;
 //     console.log(document.getElementById("buy1").innerHTML)
