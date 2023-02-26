@@ -152,7 +152,7 @@ for (let product of goods){
     goodsDom.appendChild(productDiv);
 }
 
-
+alert("Для покупки товаров надо авторизироваться!")
 
 
 let data_users = [{name:"admin",password:666}],
@@ -232,12 +232,12 @@ function pass_class(div_product){
     list_goods.push(div_product.outerHTML)
     div_product.onclick = null
 }
-function overwriting_styles_login(){
+function overwriting_styles_login(name=username){
     // переазапись стилей при авторизации
     document.querySelector(".navbar__btn-signIn").style.display = 'none';
     document.querySelector(".navbar__btn-registration").style.display = 'none';
     document.querySelector(".navbar__user-authorized").style.display = 'flex';
-    document.querySelector(".navbar__username").innerText = 'username';
+    document.querySelector(".navbar__username").innerText = name;
 }
 function authorization(){
     alert("Подвердите ваши данные");
@@ -259,7 +259,7 @@ function authorization(){
         }else if (user_choice == 2){
             for (let data of data_users){
                 if (authorization_name == data.name && authorization_password == data.password){
-                    overwriting_styles_login()
+                    overwriting_styles_login(authorization_name)
                     if (authorization_name == "admin" && authorization_password == 666){
                         // если пользователь админ то даем ему его полномочия
                         document.querySelector(".navbar__add-product").style.display = 'block';
