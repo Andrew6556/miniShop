@@ -112,9 +112,11 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid white;
     margin-right: 10px;
 }
+.navbar__btn-signIn{
+    margin-right: 20px;
+}
 .navbar__btn-registration{
     border: 2px solid white;
-    margin:0  40px;
 }
 .navbar__login{
     display: flex;
@@ -262,9 +264,12 @@ h1, h2, h3, h4, h5, h6 {
 /* adaptive */
 @media screen and (max-width: 720px){
     .navbar{
-        justify-content: center;
+        flex-direction: column;
     }
     .navbar__login{
-        margin-bottom: 20px;
+        margin-bottom: 15px;
+    }
+    .header__content{
+        margin-top: 130px;
     }
 }
