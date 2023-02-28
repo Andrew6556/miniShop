@@ -259,3 +259,12 @@ h1, h2, h3, h4, h5, h6 {
     display: flex;
     flex-wrap: wrap;
 }
+/* adaptive */
+@media screen and (max-width: 720px){
+    .navbar{
+        justify-content: center;
+    }
+    .navbar__login{
+        margin-bottom: 20px;
+    }
+}
