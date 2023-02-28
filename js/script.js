@@ -152,7 +152,7 @@ for (let product of goods){
     goodsDom.appendChild(productDiv);
 }
 
-alert("Для покупки товаров надо авторизироваться!")
+alert("Для покупки товаров надо авторизироваться!");
 
 
 let data_users = [{name:"admin",password:666}],
@@ -164,6 +164,11 @@ let data_users = [{name:"admin",password:666}],
 let username,
     user_password;
 
+// let items = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
+//     return Number(elem.innerText);
+// });
+// console.log(Math.max.apply(null,items));
+// console.log(Math.min.apply(null, items));
 
 function enumeration_goods(click=null){
     document.querySelectorAll(".goods__card").forEach(el =>{
