@@ -153,7 +153,6 @@ for (let product of goods){
     goodsDom.appendChild(productDiv);
 }
 
-enumeration_goods()
 distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
 alert("Для покупки товаров надо авторизироваться!");
@@ -167,7 +166,9 @@ let data_users = [{name:"admin",password:666}],
 
 let username,
     user_password;
+
     
+enumeration_goods()
 
 function distinguish_cheap_and_expensive_goods(list_price){
     // включаем анимацию взависимости от цены
