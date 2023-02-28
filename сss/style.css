@@ -83,26 +83,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 /* header__top */
 .header__top{
+    position: fixed;
     padding: 20px 0;
+    width: 100%;
+    top: 0px;
+    left: 0px;
     background: #882334;
+    z-index: 1;
 }
 .navbar{
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
     align-items: center;
 }
-.navbar__login{
-    display: flex;
-    align-items: center;
-}
-.navbar__add-product{
-    display: none;
+.navbar__username{
+    color: white;
     font-size: 20px;
-    margin: 0 10px;
-}
-.navbar__btn-registration{
-    border: 2px solid white;
-    margin:0  40px;
+    margin-right: 5px;
 }
 .navbar__user-authorized{
     display: none;
@@ -114,12 +112,38 @@ h1, h2, h3, h4, h5, h6 {
     border: 2px solid white;
     margin-right: 10px;
 }
-.navbar__username{
+.navbar__btn-registration{
+    border: 2px solid white;
+    margin:0  40px;
+}
+.navbar__login{
+    display: flex;
+    align-items: center;
+}
+/* вход систему */
+.navbar__basket{
+    display: flex;
+    align-items: center;
+}
+.navbar__sumTotal{
+    margin-right: 30px;
+}
+.navbar__sumTotal-title{
     color: white;
     font-size: 20px;
-    margin-right: 5px;
 }
-.navbar__basket-img{
+.navbar__sumTotal-price{
+    font-size: 28px;
+    color: black;
+    text-decoration: underline;
+}
+.navbar__add-product{
+    display: none;
+    font-size: 20px;
+    margin: 0 10px;
+}
+
+.navbar__basket-inner{
     position: relative;
 }
 .navbar__num-buy{
@@ -147,7 +171,7 @@ h1, h2, h3, h4, h5, h6 {
 .goods{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 }
 .goods__card{
@@ -160,7 +184,7 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
     background: #2B2C2D;
     box-shadow: 4px 1px 5px 2px #0000009a;
-    margin: 10px 0;
+    margin: 10px 10px;
 }
 .goods__card:hover .goods__hover-buy{
     visibility: visible;

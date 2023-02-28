@@ -15,18 +15,26 @@
                     <div class="navbar__login">
                         <button class="navbar__btn-signIn btn" onclick="authorization()">Авторизироваться</button>
                         <button class="navbar__btn-registration btn" onclick="registration()">Зарегистрироваться</button>
-                        <button class="navbar__add-product btn" onclick="add_product()">Добавить товар</button>
                         <div class="navbar__user-authorized">
                             <p class="navbar__username">Аndrey</p>
                             <div class="navbar__img-user">
                                 <img src="./img/user.png" alt="#">
                             </div>
                         </div>
-                        <div class="navbar__basket">
-                            <a href="basket.html" onclick="add_div()">
-                                <div class="navbar__basket-img">
+                        <button class="navbar__add-product btn" onclick="add_product()">Добавить товар</button>
+                    </div>
+                    <div class="navbar__basket">
+                        <div class="navbar__sumTotal">
+                            <p class="navbar__sumTotal-title">
+                                Общая стоимость:
+                                <span class="navbar__sumTotal-price">0</span>
+                            </p>
+                        </div>
+                        <div class="navbar__basket-img">
+                            <a href="basket.html" onclick="data_transfer_on_click()()">
+                                <div class="navbar__basket-inner">
                                     <img src="./img/cart.png" alt="buy">
-                                    <div class="navbar__num-buy"></div>
+                                    <div class="navbar__num-buy">0</div>
                                 </div>
                             </a>
                         </div>

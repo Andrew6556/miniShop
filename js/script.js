@@ -118,7 +118,7 @@ let goodsDom = document.querySelector(".goods");
 for (let product of goods){
     let productDiv = document.createElement('div');
     productDiv.classList.add("goods__block");
-    productDiv.innerHTML = `<div class="goods__card" onclick="pass_class(this),increase_number_purchases()">
+    productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
                             <h1 class="goods__title">${product.name}</h1>
                             <div class="goods__inner">
                                 <div class="goods__wrap">
@@ -157,8 +157,9 @@ alert("Для покупки товаров надо авторизироват�
 
 let data_users = [{name:"admin",password:666}],
     list_goods = [],
-    num_buy    = 0,
-    link_click = document.querySelector(".goods__card").onclick;
+    num_buy    = 0, 
+    link_click = document.querySelector(".goods__card").onclick,
+    sum_total = 0;
 
 let username,
     user_password;
@@ -184,7 +185,7 @@ function add_product(){
 
     let productDiv = document.createElement('div');
     productDiv.classList.add("goods__block");
-    productDiv.innerHTML = `<div class="goods__card" onclick="pass_class(this),increase_number_purchases()">
+    productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
                             <h1 class="goods__title">${product_name}</h1>
                             <div class="goods__inner">
                                 <div class="goods__wrap">
@@ -217,20 +218,23 @@ function add_product(){
                         </div>`;
     goodsDom.appendChild(productDiv);
 }
-function add_div(){
-    // при клике передаем массив купленных товаров
+function data_transfer_on_click(){
+    // при клике передаем массив купленных товаров и передаем username 
     localStorage.setItem("product", list_goods);
+    localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
 }
 function increase_number_purchases(){
     // При клике увеличиваем число покупок
     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
 }
-function pass_class(div_product){
-    // При клике получаем обьект дочернего класса, где он был сделан
+function change_styles(div_product){
+    // При клике получаем обьект дочернего класса, где он был сделан и меняем стили
     div_product.querySelector(".goods__btn-hover").innerText = "Продано";
     div_product.querySelector(".goods__btn-hover").disabled = true;
-    list_goods.push(div_product.outerHTML)
-    div_product.onclick = null
+    list_goods.push(div_product.outerHTML);
+    sum_total += Number(div_product.querySelector(".goods__price-text").innerText);
+    document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
+    div_product.onclick = null;
 }
 function overwriting_styles_login(name=username){
     // переазапись стилей при авторизации
