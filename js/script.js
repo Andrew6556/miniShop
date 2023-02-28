@@ -148,9 +148,13 @@ for (let product of goods){
                             <div class="goods__hover-buy">
                                 <button class="goods__btn-hover">Купить</button>
                             </div>
+                            <div class="goods__animation-price"></div>
                         </div>`;
     goodsDom.appendChild(productDiv);
 }
+
+enumeration_goods()
+distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
 alert("Для покупки товаров надо авторизироваться!");
 
@@ -159,16 +163,30 @@ let data_users = [{name:"admin",password:666}],
     list_goods = [],
     num_buy    = 0, 
     link_click = document.querySelector(".goods__card").onclick,
-    sum_total = 0;
+    sum_total  = 0;
 
 let username,
     user_password;
+    
 
-// let items = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
-//     return Number(elem.innerText);
-// });
-// console.log(Math.max.apply(null,items));
-// console.log(Math.min.apply(null, items));
+function distinguish_cheap_and_expensive_goods(list_price){
+    // включаем анимацию взависимости от цены
+    document.querySelectorAll(".goods__card").forEach(card =>{
+        if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
+            card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
+        }else if(card.querySelector(".goods__price-text").innerHTML == list_price[0]){
+            card.querySelector(".goods__animation-price").innerText = "Самый дешевый товар";
+        }
+    })
+}
+
+function get_max_and_min_price(){
+    // создаем массив из цен => возращаем макс цену и мин
+    let list_price = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
+        return Number(elem.innerText)
+    })
+    return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
+}
 
 function enumeration_goods(click=null){
     document.querySelectorAll(".goods__card").forEach(el =>{
@@ -177,7 +195,6 @@ function enumeration_goods(click=null){
     })
 }
 
-enumeration_goods()
 
 function add_product(){
     // добавление new товара

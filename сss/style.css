@@ -188,6 +188,33 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 4px 1px 5px 2px #0000009a;
     margin: 10px 10px;
 }
+.goods__animation-price{
+    width: 100%;
+    height: 100%;
+    font-size: 30px;
+    visibility: visible;
+    opacity: 1;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: visibility 200ms, opacity 200ms ease-in-out;
+    animation: flashing_text 1.2s cubic-bezier(0, 0, 0.2, 1)  infinite normal running 0s none;
+}
+@keyframes flashing_text{
+    0%{
+        color: white;
+        font-size: 30px;
+    }
+    100%{
+        color: red;
+        font-size: 26px;
+    }
+}
+.goods__card:hover .goods__animation-price{
+    visibility: hidden;
+    opacity: 0;
+}
 .goods__card:hover .goods__hover-buy{
     visibility: visible;
     opacity: 1;
