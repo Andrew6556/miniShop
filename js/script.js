@@ -268,7 +268,6 @@ function overwriting_styles_login(name=username){
 }
 function authorization( authorization_name=prompt("Введите ваше имя"),
                     authorization_password=prompt("Введите ваш пароль")){
-    alert("Подвердите ваши данные");
     for (let data of data_users){
         if (authorization_name == data.name && authorization_password == data.password){
             overwriting_styles_login(authorization_name)
