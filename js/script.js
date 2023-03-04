@@ -168,7 +168,7 @@ let username,
     user_password;
 
     
-make_products_not_clickable()
+enable_or_disable_product_click()
 
 function distinguish_cheap_and_expensive_goods(list_price){
     // включаем анимацию взависимости от цены
@@ -189,13 +189,12 @@ function get_max_and_min_price(){
     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
 }
 
-function make_products_not_clickable(click=null){
+function enable_or_disable_product_click(click=null){
     document.querySelectorAll(".goods__card").forEach(el =>{
         // делаем покупку товаров не возможной или наоборот
         el.onclick = click;
     })
 }
-
 
 function add_product(){
     // добавление new товара
@@ -275,7 +274,7 @@ function authorization( authorization_name=prompt("Введите ваше им�
                 // если пользователь админ то даем ему его полномочия
                     document.querySelector(".navbar__add-product").style.display = 'block';
                 }
-                make_products_not_clickable(link_click);
+                enable_or_disable_product_click(link_click);
             alert("Вы успешно авторизировались")
             return
         }
@@ -283,7 +282,7 @@ function authorization( authorization_name=prompt("Введите ваше им�
     if (username == authorization_name && user_password == authorization_password){
         data_users.push({name:username,password:user_password});
         overwriting_styles_login()
-        make_products_not_clickable(link_click)
+        enable_or_disable_product_click(link_click)
         alert("Вы успешно авторизировались")
     }else{
         alert("Error в введенных данных")
