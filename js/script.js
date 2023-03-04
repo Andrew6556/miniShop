@@ -266,38 +266,28 @@ function overwriting_styles_login(name=username){
     document.querySelector(".navbar__user-authorized").style.display = 'flex';
     document.querySelector(".navbar__username").innerText = name;
 }
-function authorization(){
+function authorization( authorization_name=prompt("Введите ваше имя"),
+                    authorization_password=prompt("Введите ваш пароль")){
     alert("Подвердите ваши данные");
-    alert("Вы впервые у нас?");
-    let user_choice = +prompt("Введите 1 если да; 2 если нет")
-    loop:while(user_choice == 1 || user_choice == 2){
-        let authorization_name     = prompt("Введите ваше имя"),
-            authorization_password = prompt("Введите ваш пароль");
-        if (user_choice == 1){
-            if (username == authorization_name && user_password == authorization_password){
-                data_users.push({name:username,password:user_password});
-                overwriting_styles_login()
-                enumeration_goods(link_click)
-                break loop
-            }else{
-                alert("Error в введенных данных")
-                break loop
-            }
-        }else if (user_choice == 2){
-            for (let data of data_users){
-                if (authorization_name == data.name && authorization_password == data.password){
-                    overwriting_styles_login(authorization_name)
-                    if (authorization_name == "admin" && authorization_password == 666){
-                        // если пользователь админ то даем ему его полномочия
-                        document.querySelector(".navbar__add-product").style.display = 'block';
-                    }
-                    enumeration_goods(link_click)
-                    break loop;
+    for (let data of data_users){
+        if (authorization_name == data.name && authorization_password == data.password){
+            overwriting_styles_login(authorization_name)
+            if (authorization_name == "admin" && authorization_password == 666){
+                // если пользователь админ то даем ему его полномочия
+                    document.querySelector(".navbar__add-product").style.display = 'block';
                 }
-            }
-            alert("Error в введенных данных")
-            break loop;
+            enumeration_goods(link_click);
+            alert("Вы успешно авторизировались")
+            return
         }
+    } 
+    if (username == authorization_name && user_password == authorization_password){
+        data_users.push({name:username,password:user_password});
+        overwriting_styles_login()
+        enumeration_goods(link_click)
+        alert("Вы успешно авторизировались")
+    }else{
+        alert("Error в введенных данных")
     }
 }
 
