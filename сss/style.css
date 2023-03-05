@@ -309,7 +309,7 @@ h1, h2, h3, h4, h5, h6 {
     background: #fff;
     color: #000;
     max-width: 800px;
-    /* padding: 30px; */
+    padding: 30px;
 }
 /* .popup__close{
 } */
