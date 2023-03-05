@@ -306,23 +306,29 @@ h1, h2, h3, h4, h5, h6 {
     padding: 30px 10px;
 }
 .popup__content {
-    background: #fff;
+    background: #ffffff;
+    border-radius: 10px;
     color: #000;
     max-width: 800px;
-    padding: 30px;
+    padding: 35px;
+    position: relative;
 }
-/* .popup__close{
-} */
+.popup__close{
+    position: absolute;
+    color: #000;
+    right: 15px;
+    top: 8px;
+    font-size: 28px;
+}
 
 /* form */
 .form {
     width: 500px;
     border: 2px solid #E27B30;
     border-radius: 1.5rem;
-    background: #2B2C2D;
 }
 .form__title {
-    color: white;
+    color: black;
     text-align: center;
     padding: 22px 0;
     font-size: 30px;
@@ -342,6 +348,7 @@ h1, h2, h3, h4, h5, h6 {
     padding: 15px 43px;
 }
 .form__input {
+    background: #00000011;
     border: 1px solid #E27B30;
     color: black;
     border-radius: 15px;
@@ -352,7 +359,8 @@ h1, h2, h3, h4, h5, h6 {
 
 .form__label {
     display: block;
-    color: white;
+    color: black;
+    font-weight: 500;
     font-size: 17px;
     margin-bottom: 5px;
 }
