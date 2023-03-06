@@ -115,43 +115,43 @@ let goods = [
 let goodsDom = document.querySelector(".goods");
 
 // генерация данных из массива на html страниццу
-// for (let product of goods){
-//     let productDiv = document.createElement('div');
-//     productDiv.classList.add("goods__block");
-//     productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
-//                             <h1 class="goods__title">${product.name}</h1>
-//                             <div class="goods__inner">
-//                                 <div class="goods__wrap">
-//                                     <div class="goods__item">
-//                                         <p class="goods__item-title">Страна</h3>
-//                                         <p class="goods__item-text">${product.country}</p>
-//                                     </div>
-//                                     <div class="goods__item">
-//                                         <h3 class="goods__item-title">Гарантия</h3>
-//                                         <p class="goods__item-text">${product.guarantee}</p>
-//                                     </div>
-//                                 </div>
-//                                 <div class="goods__wrap">
-//                                     <div class="goods__item">
-//                                         <p class="goods__item-title">Ширина экрана</h3>
-//                                         <p class="goods__item-text">${product.screen}</p>
-//                                     </div>
-//                                     <div class="goods__item">
-//                                         <h3 class="goods__item-title">Память</h3>
-//                                         <p class="goods__item-text">${product.memory}</p>
-//                                     </div>
-//                                 </div>
-//                                 <div class="goods__price">
-//                                     Цена: <span class="goods__price-text">${product.price}</span>
-//                                 </div>
-//                             </div>
-//                             <div class="goods__hover-buy">
-//                                 <button class="goods__btn-hover">Купить</button>
-//                             </div>
-//                             <div class="goods__animation-price"></div>
-//                         </div>`;
-//     goodsDom.appendChild(productDiv);
-// }
+for (let product of goods){
+    let productDiv = document.createElement('div');
+    productDiv.classList.add("goods__block");
+    productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
+                            <h1 class="goods__title">${product.name}</h1>
+                            <div class="goods__inner">
+                                <div class="goods__wrap">
+                                    <div class="goods__item">
+                                        <p class="goods__item-title">Страна</h3>
+                                        <p class="goods__item-text">${product.country}</p>
+                                    </div>
+                                    <div class="goods__item">
+                                        <h3 class="goods__item-title">Гарантия</h3>
+                                        <p class="goods__item-text">${product.guarantee}</p>
+                                    </div>
+                                </div>
+                                <div class="goods__wrap">
+                                    <div class="goods__item">
+                                        <p class="goods__item-title">Ширина экрана</h3>
+                                        <p class="goods__item-text">${product.screen}</p>
+                                    </div>
+                                    <div class="goods__item">
+                                        <h3 class="goods__item-title">Память</h3>
+                                        <p class="goods__item-text">${product.memory}</p>
+                                    </div>
+                                </div>
+                                <div class="goods__price">
+                                    Цена: <span class="goods__price-text">${product.price}</span>
+                                </div>
+                            </div>
+                            <div class="goods__hover-buy">
+                                <button class="goods__btn-hover">Купить</button>
+                            </div>
+                            <div class="goods__animation-price"></div>
+                        </div>`;
+    goodsDom.appendChild(productDiv);
+}
 
 distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
@@ -195,30 +195,28 @@ function enable_or_disable_product_click(click=null){
         el.onclick = click;
     })
 }
+document.querySelector(".form").addEventListener('submit', (e) => { 
+    // Отключаем событие по умолчанию 
+    e.preventDefault(); 
+    // Очищаем поля формы 
+    e.target.reset(); 
+});
 
-function make_modal_window_visible(){
-    // появление модального окна
-    document.querySelector(".popup").style.visibility = 'visible';
-    document.querySelector(".popup").style.opacity    = '1';
+function modal_window_visibility(visibility='visible', opacity='1'){
+    // регулируем появление или удаление окна
+    document.querySelector(".popup").style.visibility = visibility;
+    document.querySelector(".popup").style.opacity    = opacity;
 }
 function get_form_data(){
-    document.querySelector(".form__btn").addEventListener("click", () => {
-        let list_data = [];
-        document.querySelectorAll(".form__input").forEach((div_input) => {
-            list_data.push(div_input.value)
-        });
-        document.querySelector(".form").addEventListener('submit', (e) => { 
-            // Отключаем событие по умолчанию 
-            e.preventDefault(); 
-            // Очищаем поля формы 
-            e.target.reset(); 
-        });
-        console.log(list_data);
-        return list_data;
-    })
+    // получаем данные с формы
+    let list_data = [];
+    document.querySelectorAll(".form__input").forEach((div_input) => {
+        list_data.push(div_input.value)
+    });
+    return list_data;
 }
-    
 function add_new_product(list_data){
+    // добавление нового товара
     let productDiv = document.createElement('div');
     productDiv.classList.add("goods__block");
     productDiv.innerHTML = `<div class="goods__block">
@@ -259,10 +257,8 @@ function add_new_product(list_data){
                     </div>
                 </div>`;
     goodsDom.appendChild(productDiv);
+    modal_window_visibility("hidden","0");
 }
-
-
-
 
 function data_transfer_on_click(){
     // при клике передаем массив купленных товаров и передаем username 

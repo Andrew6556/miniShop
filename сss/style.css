@@ -247,7 +247,7 @@ h1, h2, h3, h4, h5, h6 {
 .goods__wrap{
     display: flex;
     justify-content: space-between;
-    margin-top: 20px;
+    margin-top: 10px;
 }
 .goods__item{
     flex-grow: 1;
@@ -256,20 +256,18 @@ h1, h2, h3, h4, h5, h6 {
     margin-right:15px;
 }
 .goods__title {
-    border-bottom: 1px solid #E27B30;
-    padding: 30px 15px;
+    padding: 12px 15px;
     font-size: 23px;
-    margin-bottom: 27px;
     text-align: center;
 }
-/* .goods__title::after{
+.goods__title::after{
     content: "";
     margin: 10px auto 0 auto;
     display: block;
     width: 100px;
     height: 2px;
     background: #E27B30;
-} */
+}
 .goods__item-title{
     font-size: 20px;
     font-weight: 300;
@@ -289,7 +287,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .goods__price{
     text-align: center;
-    margin: 20px 0;
+    margin: 12px 0;
     font-size: 28px;
 }
 .goods__price-text{
@@ -322,27 +320,12 @@ h1, h2, h3, h4, h5, h6 {
     padding: 30px 10px;
 }
 
-.popup__content {
-    background: #ffffff;
-    border-radius: 10px;
-    color: #000;
-    max-width: 800px;
-    padding: 35px;
-    position: relative;
-}
-.popup__close{
-    position: absolute;
-    color: #000;
-    right: 15px;
-    top: 8px;
-    font-size: 28px;
-}
-
 /* form */
 .form {
+    background: #ffffff;
     width: 500px;
     border: 2px solid #E27B30;
-    border-radius: 1.5rem;
+    border-radius: 15px;
 }
 .form__title {
     color: black;

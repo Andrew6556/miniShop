@@ -21,7 +21,7 @@
                                 <img src="./img/user.png" alt="#">
                             </div>
                         </div>
-                        <button class="navbar__add-product btn" onclick="make_modal_window_visible()">Добавить товар</button>
+                        <button class="navbar__add-product btn" onclick="modal_window_visibility()">Добавить товар</button>
                     </div>
                     <div class="navbar__basket">
                         <div class="navbar__sumTotal">
@@ -45,43 +45,7 @@
             <!-- header__top-->
             <div class="header__content container">
                 <div class="goods">
-                    <div class="goods__block">
-                        <div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
-                            <div class="goods__card-img">
-                                <img src="https://avatars.mds.yandex.net/i?id=e329f344b57cbd6df1048412b1f298998204e093-8340613-images-thumbs&n=13" alt="#">
-                            </div>
-                            <h1 class="goods__title">Смартфон Xiaomi Redmi Note 11S</h1>
-                            <div class="goods__inner">
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Страна</h3>
-                                        <p class="goods__passenger goods__item-text">$country</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Гарантия</h3>
-                                        <p class="goods__passport goods__item-text">$product</p>
-                                    </div>
-                                </div>
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Ширина экрана</h3>
-                                        <p class="goods__passenger goods__item-text">$product</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Память</h3>
-                                        <p class="goods__passport goods__item-text">$product</p>
-                                    </div>
-                                </div>
-                                <div class="goods__price">
-                                    Цена: <span class="goods__price-text">$price</span>
-                                </div>
-                            </div>
-                            <div class="goods__hover-buy">
-                                <button class="goods__btn-hover">Купить</button>
-                            </div>
-                            <div class="goods__animation-price"></div>
-                        </div>
-                    </div>
+                    
                 </div>
                 <!-- "goods" -->
             </div>
@@ -90,49 +54,46 @@
     </div>
     <div class="popup">
         <div class="popup__body">
-            <div class="popup__content">
-                <a class="popup__close" href="#">X</a>
-                <form class="form" action="#">
-                    <h3 class="form__title text-center">Заполните данные товара</h3>
-                    <div class="form__inner">
-                        <div class="form-item">
-                            <label class="form__label" for="forIrl">Введите url картинки товара</label>
-                            <input class="form__input" id="form__forIrl" type="text" name="Irl" placeholder="url">
-                        </div>
-                        <div class="form__wrapper">
-                            <div class="form-item">
-                                <label class="form__label" for="forNameProduct">Введите Название товара</label>
-                                <input class="form__input"  id="form__forNameProduct" type="text" name="NameProduct" placeholder="Название товара">
-                            </div>
-                            <div class="form-item">
-                                <label class="form__label" for="forCountry">Страна производителя</label>
-                                <input class="form__input" id="form__forCountry" type="text" name="Country" placeholder="Страна">
-                            </div>
-                        </div>
-                        <div class="form__wrapper">
-                            <div class="form-item">
-                                <label class="form__label"  for="forScreen">Введите Ширину товара</label>
-                                <input class="form__input" id="form__forScreen" type="text" name="Screen" placeholder="Ширина товара">
-                            </div>
-                            <div class="form-item">
-                                <label class="form__label" for="forGuarantee">Есть ли гарантия?</label>
-                                <input class="form__input" id="form__forGuarantee" type="text" name="Guarantee" placeholder="Гарантия">
-                            </div>
-                        </div>
-                        <div class="form__wrapper">
-                            <div class="form-item">
-                                <label class="form__label" for="forMemory">Количество памяти товара</label>
-                                <input class="form__input" id="form__forMemory" type="text" name="Memory" placeholder="Пямять устройства">
-                            </div>
-                            <div class="form-item">
-                                <label class="form__label" for="forPrice">Введите цену товара</label>
-                                <input class="form__input" id="form__forPrice" type="text" name="Price" type="text" placeholder="Цена">
-                            </div>
-                        </div>
-                        <button class="form__btn" type="submit" onclick="add_new_product(get_form_data())">Отправить</button>
+            <form class="form" action="#">
+                <h3 class="form__title text-center">Заполните данные товара</h3>
+                <div class="form__inner">
+                    <div class="form-item">
+                        <label class="form__label" for="forIrl">Введите url картинки товара</label>
+                        <input class="form__input" id="form__forIrl" type="text" name="Irl" placeholder="url">
                     </div>
-                </form>
-            </div>
+                    <div class="form__wrapper">
+                        <div class="form-item">
+                            <label class="form__label" for="forNameProduct">Введите Название товара</label>
+                            <input class="form__input"  id="form__forNameProduct" type="text" name="NameProduct" placeholder="Название товара">
+                        </div>
+                        <div class="form-item">
+                            <label class="form__label" for="forCountry">Страна производителя</label>
+                            <input class="form__input" id="form__forCountry" type="text" name="Country" placeholder="Страна">
+                        </div>
+                    </div>
+                    <div class="form__wrapper">
+                        <div class="form-item">
+                            <label class="form__label"  for="forScreen">Введите Ширину товара</label>
+                            <input class="form__input" id="form__forScreen" type="text" name="Screen" placeholder="Ширина товара">
+                        </div>
+                        <div class="form-item">
+                            <label class="form__label" for="forGuarantee">Есть ли гарантия?</label>
+                            <input class="form__input" id="form__forGuarantee" type="text" name="Guarantee" placeholder="Гарантия">
+                        </div>
+                    </div>
+                    <div class="form__wrapper">
+                        <div class="form-item">
+                            <label class="form__label" for="forMemory">Количество памяти товара</label>
+                            <input class="form__input" id="form__forMemory" type="text" name="Memory" placeholder="Пямять устройства">
+                        </div>
+                        <div class="form-item">
+                            <label class="form__label" for="forPrice">Введите цену товара</label>
+                            <input class="form__input" id="form__forPrice" type="text" name="Price" type="text" placeholder="Цена">
+                        </div>
+                    </div>
+                    <button class="form__btn" type="submit" onclick="add_new_product(get_form_data())">Отправить</button>
+                </div>
+            </form>
         </div>
         
     </div>
