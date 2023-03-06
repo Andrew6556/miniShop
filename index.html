@@ -21,7 +21,7 @@
                                 <img src="./img/user.png" alt="#">
                             </div>
                         </div>
-                        <button class="navbar__add-product btn" onclick="add_product()">Добавить товар</button>
+                        <button class="navbar__add-product btn" onclick="make_modal_window_visible()">Добавить товар</button>
                     </div>
                     <div class="navbar__basket">
                         <div class="navbar__sumTotal">
@@ -45,7 +45,43 @@
             <!-- header__top-->
             <div class="header__content container">
                 <div class="goods">
-                    
+                    <div class="goods__block">
+                        <div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
+                            <div class="goods__card-img">
+                                <img src="https://avatars.mds.yandex.net/i?id=e329f344b57cbd6df1048412b1f298998204e093-8340613-images-thumbs&n=13" alt="#">
+                            </div>
+                            <h1 class="goods__title">Смартфон Xiaomi Redmi Note 11S</h1>
+                            <div class="goods__inner">
+                                <div class="goods__wrap">
+                                    <div class="goods__item">
+                                        <p class="goods__item-title">Страна</h3>
+                                        <p class="goods__passenger goods__item-text">$country</p>
+                                    </div>
+                                    <div class="goods__item">
+                                        <h3 class="goods__item-title">Гарантия</h3>
+                                        <p class="goods__passport goods__item-text">$product</p>
+                                    </div>
+                                </div>
+                                <div class="goods__wrap">
+                                    <div class="goods__item">
+                                        <p class="goods__item-title">Ширина экрана</h3>
+                                        <p class="goods__passenger goods__item-text">$product</p>
+                                    </div>
+                                    <div class="goods__item">
+                                        <h3 class="goods__item-title">Память</h3>
+                                        <p class="goods__passport goods__item-text">$product</p>
+                                    </div>
+                                </div>
+                                <div class="goods__price">
+                                    Цена: <span class="goods__price-text">$price</span>
+                                </div>
+                            </div>
+                            <div class="goods__hover-buy">
+                                <button class="goods__btn-hover">Купить</button>
+                            </div>
+                            <div class="goods__animation-price"></div>
+                        </div>
+                    </div>
                 </div>
                 <!-- "goods" -->
             </div>
@@ -93,7 +129,7 @@
                                 <input class="form__input" id="form__forPrice" type="text" name="Price" type="text" placeholder="Цена">
                             </div>
                         </div>
-                        <button class="form__btn" type="submit">Отправить</button>
+                        <button class="form__btn" type="submit" onclick="add_new_product(get_form_data())">Отправить</button>
                     </div>
                 </form>
             </div>

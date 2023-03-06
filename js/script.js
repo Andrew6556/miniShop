@@ -115,43 +115,43 @@ let goods = [
 let goodsDom = document.querySelector(".goods");
 
 // генерация данных из массива на html страниццу
-for (let product of goods){
-    let productDiv = document.createElement('div');
-    productDiv.classList.add("goods__block");
-    productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
-                            <h1 class="goods__title">${product.name}</h1>
-                            <div class="goods__inner">
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Страна</h3>
-                                        <p class="goods__passenger goods__item-text">${product.country}</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Гарантия</h3>
-                                        <p class="goods__passport goods__item-text">${product.guarantee}</p>
-                                    </div>
-                                </div>
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Ширина экрана</h3>
-                                        <p class="goods__passenger goods__item-text">${product.screen}</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Память</h3>
-                                        <p class="goods__passport goods__item-text">${product.memory}</p>
-                                    </div>
-                                </div>
-                                <div class="goods__price">
-                                    Цена: <span class="goods__price-text">${product.price}</span>
-                                </div>
-                            </div>
-                            <div class="goods__hover-buy">
-                                <button class="goods__btn-hover">Купить</button>
-                            </div>
-                            <div class="goods__animation-price"></div>
-                        </div>`;
-    goodsDom.appendChild(productDiv);
-}
+// for (let product of goods){
+//     let productDiv = document.createElement('div');
+//     productDiv.classList.add("goods__block");
+//     productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
+//                             <h1 class="goods__title">${product.name}</h1>
+//                             <div class="goods__inner">
+//                                 <div class="goods__wrap">
+//                                     <div class="goods__item">
+//                                         <p class="goods__item-title">Страна</h3>
+//                                         <p class="goods__item-text">${product.country}</p>
+//                                     </div>
+//                                     <div class="goods__item">
+//                                         <h3 class="goods__item-title">Гарантия</h3>
+//                                         <p class="goods__item-text">${product.guarantee}</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="goods__wrap">
+//                                     <div class="goods__item">
+//                                         <p class="goods__item-title">Ширина экрана</h3>
+//                                         <p class="goods__item-text">${product.screen}</p>
+//                                     </div>
+//                                     <div class="goods__item">
+//                                         <h3 class="goods__item-title">Память</h3>
+//                                         <p class="goods__item-text">${product.memory}</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="goods__price">
+//                                     Цена: <span class="goods__price-text">${product.price}</span>
+//                                 </div>
+//                             </div>
+//                             <div class="goods__hover-buy">
+//                                 <button class="goods__btn-hover">Купить</button>
+//                             </div>
+//                             <div class="goods__animation-price"></div>
+//                         </div>`;
+//     goodsDom.appendChild(productDiv);
+// }
 
 distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
@@ -171,7 +171,7 @@ let username,
 enable_or_disable_product_click()
 
 function distinguish_cheap_and_expensive_goods(list_price){
-    // включаем анимацию взависимости от цены
+    // включаем анимацию самого дорого и самого дешевого товара
     document.querySelectorAll(".goods__card").forEach(card =>{
         if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
             card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
@@ -196,50 +196,74 @@ function enable_or_disable_product_click(click=null){
     })
 }
 
-function add_product(){
-    // добавление new товара
-    let product_name      = prompt("Напишите название товара"),
-        product_country   = prompt("Напишите страну производителя"),
-        product_guarantee = prompt("Есть ли гарантия на это товар.Да или Нет"),
-        product_screen    = prompt("Напишите ширину экрана товара"),
-        product_memory    = prompt("Напишите обьем памяти"),
-        product_price     = prompt("Напишите цену за этот товар");
-
+function make_modal_window_visible(){
+    // появление модального окна
+    document.querySelector(".popup").style.visibility = 'visible';
+    document.querySelector(".popup").style.opacity    = '1';
+}
+function get_form_data(){
+    document.querySelector(".form__btn").addEventListener("click", () => {
+        let list_data = [];
+        document.querySelectorAll(".form__input").forEach((div_input) => {
+            list_data.push(div_input.value)
+        });
+        document.querySelector(".form").addEventListener('submit', (e) => { 
+            // Отключаем событие по умолчанию 
+            e.preventDefault(); 
+            // Очищаем поля формы 
+            e.target.reset(); 
+        });
+        console.log(list_data);
+        return list_data;
+    })
+}
+    
+function add_new_product(list_data){
     let productDiv = document.createElement('div');
     productDiv.classList.add("goods__block");
-    productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
-                            <h1 class="goods__title">${product_name}</h1>
-                            <div class="goods__inner">
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Страна</h3>
-                                        <p class="goods__passenger goods__item-text">${product_country}</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Гарантия</h3>
-                                        <p class="goods__passport goods__item-text">${product_guarantee}</p>
-                                    </div>
+    productDiv.innerHTML = `<div class="goods__block">
+                        <div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
+                        <div class="goods__card-img">
+                            <img src="${list_data[0]}" alt="#">
+                        </div>
+                        <h1 class="goods__title">${list_data[1]}</h1>
+                        <div class="goods__inner">
+                            <div class="goods__wrap">
+                                <div class="goods__item">
+                                    <p class="goods__item-title">Страна</h3>
+                                    <p class="goods__item-text">${list_data[2]}</p>
                                 </div>
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Ширина экрана</h3>
-                                        <p class="goods__passenger goods__item-text">${product_screen}</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Память</h3>
-                                        <p class="goods__passport goods__item-text">${product_memory}</p>
-                                    </div>
-                                </div>
-                                <div class="goods__price">
-                                    Цена: <span class="goods__price-text">${product_price}</span>
+                                <div class="goods__item">
+                                    <h3 class="goods__item-title">Гарантия</h3>
+                                    <p class="goods__item-text">${list_data[3]}</p>
                                 </div>
                             </div>
-                            <div class="goods__hover-buy">
-                                <button class="goods__btn-hover">Купить</button>
+                            <div class="goods__wrap">
+                                <div class="goods__item">
+                                    <p class="goods__item-title">Ширина экрана</h3>
+                                    <p class="goods__item-text">${list_data[4]}</p>
+                                </div>
+                                <div class="goods__item">
+                                    <h3 class="goods__item-title">Память</h3>
+                                    <p class="goods__item-text">${list_data[5]}</p>
+                                </div>
                             </div>
-                        </div>`;
+                            <div class="goods__price">
+                                Цена: <span class="goods__price-text">${list_data[6]}</span>
+                            </div>
+                        </div>
+                        <div class="goods__hover-buy">
+                            <button class="goods__btn-hover">Купить</button>
+                        </div>
+                        <div class="goods__animation-price"></div>
+                    </div>
+                </div>`;
     goodsDom.appendChild(productDiv);
 }
+
+
+
+
 function data_transfer_on_click(){
     // при клике передаем массив купленных товаров и передаем username 
     localStorage.setItem("product", list_goods);
