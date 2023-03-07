@@ -213,6 +213,7 @@ function get_form_data(){
     document.querySelectorAll(".form__input").forEach((div_input) => {
         list_data.push(div_input.value)
     });
+    
     return list_data;
 }
 function add_new_product(list_data){
@@ -233,13 +234,13 @@ function add_new_product(list_data){
                                 </div>
                                 <div class="goods__item">
                                     <h3 class="goods__item-title">Гарантия</h3>
-                                    <p class="goods__item-text">${list_data[3]}</p>
+                                    <p class="goods__item-text">${list_data[4]}</p>
                                 </div>
                             </div>
                             <div class="goods__wrap">
                                 <div class="goods__item">
                                     <p class="goods__item-title">Ширина экрана</h3>
-                                    <p class="goods__item-text">${list_data[4]}</p>
+                                    <p class="goods__item-text">${list_data[3]}</p>
                                 </div>
                                 <div class="goods__item">
                                     <h3 class="goods__item-title">Память</h3>
