@@ -1,5 +1,8 @@
 "use strict";
 
+import Card from "../modules/card.js";
+
+
 let goods = [
     {
         name:"iPhone 14 Pro Max",
@@ -112,215 +115,219 @@ let goods = [
     },
 ]
 
-let goodsDom = document.querySelector(".goods");
-
-// генерация данных из массива на html страниццу
-for (let product of goods){
-    let productDiv = document.createElement('div');
-    productDiv.classList.add("goods__block");
-    productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
-                            <h1 class="goods__title">${product.name}</h1>
-                            <div class="goods__inner">
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Страна</h3>
-                                        <p class="goods__item-text">${product.country}</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Гарантия</h3>
-                                        <p class="goods__item-text">${product.guarantee}</p>
-                                    </div>
-                                </div>
-                                <div class="goods__wrap">
-                                    <div class="goods__item">
-                                        <p class="goods__item-title">Ширина экрана</h3>
-                                        <p class="goods__item-text">${product.screen}</p>
-                                    </div>
-                                    <div class="goods__item">
-                                        <h3 class="goods__item-title">Память</h3>
-                                        <p class="goods__item-text">${product.memory}</p>
-                                    </div>
-                                </div>
-                                <div class="goods__price">
-                                    Цена: <span class="goods__price-text">${product.price}</span>
-                                </div>
-                            </div>
-                            <div class="goods__hover-buy">
-                                <button class="goods__btn-hover">Купить</button>
-                            </div>
-                            <div class="goods__animation-price"></div>
-                        </div>`;
-    goodsDom.appendChild(productDiv);
-}
-
-distinguish_cheap_and_expensive_goods(get_max_and_min_price())
-
-alert("Для покупки товаров надо авторизироваться!");
+let card = new Card(goods[0]);
+console.log(card.title)
 
 
-let data_users = [{name:"admin",password:666}],
-    list_goods = [],
-    num_buy    = 0, 
-    link_click = document.querySelector(".goods__card").onclick,
-    sum_total  = 0;
+// let goodsDom = document.querySelector(".goods");
 
-let username,
-    user_password;
+// // генерация данных из массива на html страниццу
+// for (let product of goods){
+//     let productDiv = document.createElement('div');
+//     productDiv.classList.add("goods__block");
+//     productDiv.innerHTML = `<div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
+//                             <h1 class="goods__title">${product.name}</h1>
+//                             <div class="goods__inner">
+//                                 <div class="goods__wrap">
+//                                     <div class="goods__item">
+//                                         <p class="goods__item-title">Страна</h3>
+//                                         <p class="goods__item-text">${product.country}</p>
+//                                     </div>
+//                                     <div class="goods__item">
+//                                         <h3 class="goods__item-title">Гарантия</h3>
+//                                         <p class="goods__item-text">${product.guarantee}</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="goods__wrap">
+//                                     <div class="goods__item">
+//                                         <p class="goods__item-title">Ширина экрана</h3>
+//                                         <p class="goods__item-text">${product.screen}</p>
+//                                     </div>
+//                                     <div class="goods__item">
+//                                         <h3 class="goods__item-title">Память</h3>
+//                                         <p class="goods__item-text">${product.memory}</p>
+//                                     </div>
+//                                 </div>
+//                                 <div class="goods__price">
+//                                     Цена: <span class="goods__price-text">${product.price}</span>
+//                                 </div>
+//                             </div>
+//                             <div class="goods__hover-buy">
+//                                 <button class="goods__btn-hover">Купить</button>
+//                             </div>
+//                             <div class="goods__animation-price"></div>
+//                         </div>`;
+//     goodsDom.appendChild(productDiv);
+// }
+
+// distinguish_cheap_and_expensive_goods(get_max_and_min_price())
+
+// alert("Для покупки товаров надо авторизироваться!");
+
+
+// let data_users = [{name:"admin",password:666}],
+//     list_goods = [],
+//     num_buy    = 0, 
+//     link_click = document.querySelector(".goods__card").onclick,
+//     sum_total  = 0;
+
+// let username,
+//     user_password;
 
     
-enable_or_disable_product_click()
+// enable_or_disable_product_click()
 
-function distinguish_cheap_and_expensive_goods(list_price){
-    // включаем анимацию самого дорого и самого дешевого товара
-    document.querySelectorAll(".goods__card").forEach(card =>{
-        if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
-            card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
-        }else if(card.querySelector(".goods__price-text").innerHTML == list_price[0]){
-            card.querySelector(".goods__animation-price").innerText = "Самый дешевый товар";
-        }
-    })
-}
+// function distinguish_cheap_and_expensive_goods(list_price){
+//     // включаем анимацию самого дорого и самого дешевого товара
+//     document.querySelectorAll(".goods__card").forEach(card =>{
+//         if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
+//             card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
+//         }else if(card.querySelector(".goods__price-text").innerHTML == list_price[0]){
+//             card.querySelector(".goods__animation-price").innerText = "Самый дешевый товар";
+//         }
+//     })
+// }
 
-function get_max_and_min_price(){
-    // создаем массив из цен => возращаем макс цену и мин
-    let list_price = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
-        return Number(elem.innerText)
-    })
-    return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
-}
+// function get_max_and_min_price(){
+//     // создаем массив из цен => возращаем макс цену и мин
+//     let list_price = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
+//         return Number(elem.innerText)
+//     })
+//     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
+// }
 
-function enable_or_disable_product_click(click=null){
-    document.querySelectorAll(".goods__card").forEach(el =>{
-        // делаем покупку товаров не возможной или наоборот
-        el.onclick = click;
-    })
-}
-document.querySelector(".form").addEventListener('submit', (e) => { 
-    // Отключаем событие по умолчанию 
-    e.preventDefault(); 
-    // Очищаем поля формы 
-    e.target.reset(); 
-});
+// function enable_or_disable_product_click(click=null){
+//     document.querySelectorAll(".goods__card").forEach(el =>{
+//         // делаем покупку товаров не возможной или наоборот
+//         el.onclick = click;
+//     })
+// }
+// document.querySelector(".form").addEventListener('submit', (e) => { 
+//     // Отключаем событие по умолчанию 
+//     e.preventDefault(); 
+//     // Очищаем поля формы 
+//     e.target.reset(); 
+// });
 
-function modal_window_visibility(visibility='visible', opacity='1'){
-    // регулируем появление или удаление окна
-    document.querySelector(".popup").style.visibility = visibility;
-    document.querySelector(".popup").style.opacity    = opacity;
-}
-function get_form_data(){
-    // получаем данные с формы
-    let list_data = [];
-    document.querySelectorAll(".form__input").forEach((div_input) => {
-        list_data.push(div_input.value)
-    });
+// function modal_window_visibility(visibility='visible', opacity='1'){
+//     // регулируем появление или удаление окна
+//     document.querySelector(".popup").style.visibility = visibility;
+//     document.querySelector(".popup").style.opacity    = opacity;
+// }
+// function get_form_data(){
+//     // получаем данные с формы
+//     let list_data = [];
+//     document.querySelectorAll(".form__input").forEach((div_input) => {
+//         list_data.push(div_input.value)
+//     });
     
-    return list_data;
-}
-function add_new_product(list_data){
-    // добавление нового товара
-    let productDiv = document.createElement('div');
-    productDiv.classList.add("goods__block");
-    productDiv.innerHTML = `<div class="goods__block">
-                        <div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
-                        <div class="goods__card-img">
-                            <img src="${list_data[0]}" alt="#">
-                        </div>
-                        <h1 class="goods__title">${list_data[1]}</h1>
-                        <div class="goods__inner">
-                            <div class="goods__wrap">
-                                <div class="goods__item">
-                                    <p class="goods__item-title">Страна</h3>
-                                    <p class="goods__item-text">${list_data[2]}</p>
-                                </div>
-                                <div class="goods__item">
-                                    <h3 class="goods__item-title">Гарантия</h3>
-                                    <p class="goods__item-text">${list_data[4]}</p>
-                                </div>
-                            </div>
-                            <div class="goods__wrap">
-                                <div class="goods__item">
-                                    <p class="goods__item-title">Ширина экрана</h3>
-                                    <p class="goods__item-text">${list_data[3]}</p>
-                                </div>
-                                <div class="goods__item">
-                                    <h3 class="goods__item-title">Память</h3>
-                                    <p class="goods__item-text">${list_data[5]}</p>
-                                </div>
-                            </div>
-                            <div class="goods__price">
-                                Цена: <span class="goods__price-text">${list_data[6]}</span>
-                            </div>
-                        </div>
-                        <div class="goods__hover-buy">
-                            <button class="goods__btn-hover">Купить</button>
-                        </div>
-                        <div class="goods__animation-price"></div>
-                    </div>
-                </div>`;
-    goodsDom.appendChild(productDiv);
-    modal_window_visibility("hidden","0");
-}
+//     return list_data;
+// }
+// function add_new_product(list_data){
+//     // добавление нового товара
+//     let productDiv = document.createElement('div');
+//     productDiv.classList.add("goods__block");
+//     productDiv.innerHTML = `<div class="goods__block">
+//                         <div class="goods__card" onclick="change_styles(this),increase_number_purchases()">
+//                         <div class="goods__card-img">
+//                             <img src="${list_data[0]}" alt="#">
+//                         </div>
+//                         <h1 class="goods__title">${list_data[1]}</h1>
+//                         <div class="goods__inner">
+//                             <div class="goods__wrap">
+//                                 <div class="goods__item">
+//                                     <p class="goods__item-title">Страна</h3>
+//                                     <p class="goods__item-text">${list_data[2]}</p>
+//                                 </div>
+//                                 <div class="goods__item">
+//                                     <h3 class="goods__item-title">Гарантия</h3>
+//                                     <p class="goods__item-text">${list_data[4]}</p>
+//                                 </div>
+//                             </div>
+//                             <div class="goods__wrap">
+//                                 <div class="goods__item">
+//                                     <p class="goods__item-title">Ширина экрана</h3>
+//                                     <p class="goods__item-text">${list_data[3]}</p>
+//                                 </div>
+//                                 <div class="goods__item">
+//                                     <h3 class="goods__item-title">Память</h3>
+//                                     <p class="goods__item-text">${list_data[5]}</p>
+//                                 </div>
+//                             </div>
+//                             <div class="goods__price">
+//                                 Цена: <span class="goods__price-text">${list_data[6]}</span>
+//                             </div>
+//                         </div>
+//                         <div class="goods__hover-buy">
+//                             <button class="goods__btn-hover">Купить</button>
+//                         </div>
+//                         <div class="goods__animation-price"></div>
+//                     </div>
+//                 </div>`;
+//     goodsDom.appendChild(productDiv);
+//     modal_window_visibility("hidden","0");
+// }
 
-function data_transfer_on_click(){
-    // при клике передаем массив купленных товаров и передаем username 
-    localStorage.setItem("product", list_goods);
-    localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
-}
-function increase_number_purchases(){
-    // При клике увеличиваем число покупок
-    document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-}
-function change_styles(div_product){
-    // При клике получаем обьект дочернего класса, где он был сделан и меняем стили
-    div_product.querySelector(".goods__btn-hover").innerText = "Продано";
-    div_product.querySelector(".goods__btn-hover").disabled = true;
-    list_goods.push(div_product.outerHTML);
-    sum_total += Number(div_product.querySelector(".goods__price-text").innerText);
-    document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
-    div_product.onclick = null;
-}
-function overwriting_styles_login(name=username){
-    // переазапись стилей при авторизации
-    document.querySelector(".navbar__btn-signIn").style.display = 'none';
-    document.querySelector(".navbar__btn-registration").style.display = 'none';
-    document.querySelector(".navbar__user-authorized").style.display = 'flex';
-    document.querySelector(".navbar__username").innerText = name;
-}
-function authorization( authorization_name=prompt("Введите ваше имя"),
-                    authorization_password=prompt("Введите ваш пароль")){
-    for (let data of data_users){
-        if (authorization_name == data.name && authorization_password == data.password){
-            overwriting_styles_login(authorization_name)
-            if (authorization_name == "admin" && authorization_password == 666){
-                // если пользователь админ то даем ему его полномочия
-                    document.querySelector(".navbar__add-product").style.display = 'block';
-                }
-                enable_or_disable_product_click(link_click);
-            alert("Вы успешно авторизировались")
-            return
-        }
-    } 
-    if (username == authorization_name && user_password == authorization_password){
-        data_users.push({name:username,password:user_password});
-        overwriting_styles_login()
-        enable_or_disable_product_click(link_click)
-        alert("Вы успешно авторизировались")
-    }else{
-        alert("Error в введенных данных")
-    }
-}
+// function data_transfer_on_click(){
+//     // при клике передаем массив купленных товаров и передаем username 
+//     localStorage.setItem("product", list_goods);
+//     localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
+// }
+// function increase_number_purchases(){
+//     // При клике увеличиваем число покупок
+//     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
+// }
+// function change_styles(div_product){
+//     // При клике получаем обьект дочернего класса, где он был сделан и меняем стили
+//     div_product.querySelector(".goods__btn-hover").innerText = "Продано";
+//     div_product.querySelector(".goods__btn-hover").disabled = true;
+//     list_goods.push(div_product.outerHTML);
+//     sum_total += Number(div_product.querySelector(".goods__price-text").innerText);
+//     document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
+//     div_product.onclick = null;
+// }
+// function overwriting_styles_login(name=username){
+//     // переазапись стилей при авторизации
+//     document.querySelector(".navbar__btn-signIn").style.display = 'none';
+//     document.querySelector(".navbar__btn-registration").style.display = 'none';
+//     document.querySelector(".navbar__user-authorized").style.display = 'flex';
+//     document.querySelector(".navbar__username").innerText = name;
+// }
+// function authorization( authorization_name=prompt("Введите ваше имя"),
+//                     authorization_password=prompt("Введите ваш пароль")){
+//     for (let data of data_users){
+//         if (authorization_name == data.name && authorization_password == data.password){
+//             overwriting_styles_login(authorization_name)
+//             if (authorization_name == "admin" && authorization_password == 666){
+//                 // если пользователь админ то даем ему его полномочия
+//                     document.querySelector(".navbar__add-product").style.display = 'block';
+//                 }
+//                 enable_or_disable_product_click(link_click);
+//             alert("Вы успешно авторизировались")
+//             return
+//         }
+//     } 
+//     if (username == authorization_name && user_password == authorization_password){
+//         data_users.push({name:username,password:user_password});
+//         overwriting_styles_login()
+//         enable_or_disable_product_click(link_click)
+//         alert("Вы успешно авторизировались")
+//     }else{
+//         alert("Error в введенных данных")
+//     }
+// }
 
-function registration(){
-    // регистрация
-    while(true){
-        let registration_name     = prompt("Введите ваше имя"),
-            registration_password = +prompt("Введите ваш пароль");
-        if (registration_name == "" || registration_password == ""){
-            alert("Вы ввели не все данные");
-        }else{
-            username = registration_name;
-            user_password = registration_password;
-            break
-        }
-    }
-}
+// function registration(){
+//     // регистрация
+//     while(true){
+//         let registration_name     = prompt("Введите ваше имя"),
+//             registration_password = +prompt("Введите ваш пароль");
+//         if (registration_name == "" || registration_password == ""){
+//             alert("Вы ввели не все данные");
+//         }else{
+//             username = registration_name;
+//             user_password = registration_password;
+//             break
+//         }
+//     }
+// }
