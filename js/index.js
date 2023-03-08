@@ -115,10 +115,11 @@ let goods = [
     },
 ]
 
-let card = new Card(goods[0]);
-console.log(card.title)
 
-
+goods.forEach((product) =>{
+    let card = new Card(product);
+    document.querySelector(".goods").appendChild(card.wrapper);
+}) 
 // let goodsDom = document.querySelector(".goods");
 
 // // генерация данных из массива на html страниццу
