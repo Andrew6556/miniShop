@@ -130,7 +130,7 @@ console.log(card.title)
 //                             <div class="goods__inner">
 //                                 <div class="goods__wrap">
 //                                     <div class="goods__item">
-//                                         <p class="goods__item-title">Страна</h3>
+//                                         <h3 class="goods__item-title">Страна</h3>
 //                                         <p class="goods__item-text">${product.country}</p>
 //                                     </div>
 //                                     <div class="goods__item">
@@ -140,7 +140,7 @@ console.log(card.title)
 //                                 </div>
 //                                 <div class="goods__wrap">
 //                                     <div class="goods__item">
-//                                         <p class="goods__item-title">Ширина экрана</h3>
+//                                         <h3 class="goods__item-title">Ширина экрана</h3>
 //                                         <p class="goods__item-text">${product.screen}</p>
 //                                     </div>
 //                                     <div class="goods__item">
