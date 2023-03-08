@@ -3,8 +3,8 @@
 
 export default class Card{
     constructor(data){
-        this.wrapper = document.createElement('div')
-        this.wrapper.classList.add("goods__card")
+        this.wrapper = document.createElement('div');
+        this.wrapper.classList.add("goods__card");
         this.wrapper.innerHTML = `<h1 class="goods__title">${data.name}</h1>
                                     <div class="goods__inner">
                                         <div class="goods__wrap">
@@ -35,9 +35,17 @@ export default class Card{
                                         <button class="goods__btn-hover">Купить</button>
                                     </div>
                                     <div class="goods__animation-price"></div>`;
-        this.wrapper.addEventListener("click", this.copyImg)
+        this.wrapper.addEventListener("click", this.change_styles)
     }
-    copyImg(){
-        console.log(this);
+    change_styles(){
+    // При клике получаем обьект дочернего класса, где он был сделан и меняем стили
+        this.querySelector(".goods__btn-hover").innerText = "Продано";
+        this.querySelector(".goods__btn-hover").disabled = true;
+        // list_goods.push(div_product.outerHTML);
+        // sum_total += Number(this.querySelector(".goods__price-text").innerText);
+        document.querySelector(".navbar__sumTotal-price").innerText = 1;
+        document.removeEventListener('mousemove', handler);
+        console.log(1)
+        // console.log(this.wrapper.querySelector(".goods__card"))
     }
 }
