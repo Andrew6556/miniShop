@@ -115,11 +115,22 @@ let goods = [
     },
 ]
 
+let card = new Card(goods);
+card.cards.forEach(e =>{
+    document.querySelector(".goods").appendChild(e)
+})
 
-goods.forEach((product) =>{
-    let card = new Card(product);
-    document.querySelector(".goods").appendChild(card.wrapper);
-}) 
+
+// card.distinguish_cheap_and_expensive_goods(card.get_max_and_min_price())
+
+
+
+// _____начальный вариант_____//
+// goods.forEach((product) =>{
+//     let card = new Card(product);
+//     document.querySelector(".goods").appendChild(card.wrapper);
+// }) 
+
 // let goodsDom = document.querySelector(".goods");
 
 // // генерация данных из массива на html страниццу
@@ -178,24 +189,7 @@ goods.forEach((product) =>{
     
 // enable_or_disable_product_click()
 
-// function distinguish_cheap_and_expensive_goods(list_price){
-//     // включаем анимацию самого дорого и самого дешевого товара
-//     document.querySelectorAll(".goods__card").forEach(card =>{
-//         if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
-//             card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
-//         }else if(card.querySelector(".goods__price-text").innerHTML == list_price[0]){
-//             card.querySelector(".goods__animation-price").innerText = "Самый дешевый товар";
-//         }
-//     })
-// }
 
-// function get_max_and_min_price(){
-//     // создаем массив из цен => возращаем макс цену и мин
-//     let list_price = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
-//         return Number(elem.innerText)
-//     })
-//     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
-// }
 
 // function enable_or_disable_product_click(click=null){
 //     document.querySelectorAll(".goods__card").forEach(el =>{
@@ -203,27 +197,7 @@ goods.forEach((product) =>{
 //         el.onclick = click;
 //     })
 // }
-// document.querySelector(".form").addEventListener('submit', (e) => { 
-//     // Отключаем событие по умолчанию 
-//     e.preventDefault(); 
-//     // Очищаем поля формы 
-//     e.target.reset(); 
-// });
 
-// function modal_window_visibility(visibility='visible', opacity='1'){
-//     // регулируем появление или удаление окна
-//     document.querySelector(".popup").style.visibility = visibility;
-//     document.querySelector(".popup").style.opacity    = opacity;
-// }
-// function get_form_data(){
-//     // получаем данные с формы
-//     let list_data = [];
-//     document.querySelectorAll(".form__input").forEach((div_input) => {
-//         list_data.push(div_input.value)
-//     });
-    
-//     return list_data;
-// }
 // function add_new_product(list_data){
 //     // добавление нового товара
 //     let productDiv = document.createElement('div');
@@ -268,16 +242,6 @@ goods.forEach((product) =>{
 //     goodsDom.appendChild(productDiv);
 //     modal_window_visibility("hidden","0");
 // }
-
-// function data_transfer_on_click(){
-//     // при клике передаем массив купленных товаров и передаем username 
-//     localStorage.setItem("product", list_goods);
-//     localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
-// }
-// function increase_number_purchases(){
-//     // При клике увеличиваем число покупок
-//     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-// }
 // function change_styles(div_product){
 //     // При клике получаем обьект дочернего класса, где он был сделан и меняем стили
 //     div_product.querySelector(".goods__btn-hover").innerText = "Продано";
@@ -287,6 +251,41 @@ goods.forEach((product) =>{
 //     document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
 //     div_product.onclick = null;
 // }
+
+// _______________!____________________
+// function increase_number_purchases(){
+//     // При клике увеличиваем число покупок
+//     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
+// }
+
+// _____________________это сделанно__________________________
+// function distinguish_cheap_and_expensive_goods(list_price){
+//     // включаем анимацию самого дорого и самого дешевого товара
+//     document.querySelectorAll(".goods__card").forEach(card =>{
+//         if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
+//             card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
+//         }else if(card.querySelector(".goods__price-text").innerHTML == list_price[0]){
+//             card.querySelector(".goods__animation-price").innerText = "Самый дешевый товар";
+//         }
+//     })
+// }
+
+// function get_max_and_min_price(){
+//     // создаем массив из цен => возращаем макс цену и мин
+//     let list_price = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
+//         return Number(elem.innerText)
+//     })
+//     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
+// }
+
+// ___________передача данных________
+// function data_transfer_on_click(){
+//     // при клике передаем массив купленных товаров и передаем username 
+//     localStorage.setItem("product", list_goods);
+//     localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
+// }
+
+// ________________________войти в систему_____________________________
 // function overwriting_styles_login(name=username){
 //     // переазапись стилей при авторизации
 //     document.querySelector(".navbar__btn-signIn").style.display = 'none';
@@ -294,6 +293,7 @@ goods.forEach((product) =>{
 //     document.querySelector(".navbar__user-authorized").style.display = 'flex';
 //     document.querySelector(".navbar__username").innerText = name;
 // }
+
 // function authorization( authorization_name=prompt("Введите ваше имя"),
 //                     authorization_password=prompt("Введите ваш пароль")){
 //     for (let data of data_users){
@@ -331,4 +331,27 @@ goods.forEach((product) =>{
 //             break
 //         }
 //     }
+// }
+
+// ____________________form_______________________
+// document.querySelector(".form").addEventListener('submit', (e) => { 
+//     // Отключаем событие по умолчанию 
+//     e.preventDefault(); 
+//     // Очищаем поля формы 
+//     e.target.reset(); 
+// });
+
+// function modal_window_visibility(visibility='visible', opacity='1'){
+//     // регулируем появление или удаление окна
+//     document.querySelector(".popup").style.visibility = visibility;
+//     document.querySelector(".popup").style.opacity    = opacity;
+// }
+// function get_form_data(){
+//     // получаем данные с формы
+//     let list_data = [];
+//     document.querySelectorAll(".form__input").forEach((div_input) => {
+//         list_data.push(div_input.value)
+//     });
+    
+//     return list_data;
 // }
