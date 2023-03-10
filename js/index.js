@@ -1,6 +1,6 @@
 "use strict";
 
-import {Card,list_goods,sum_total, num_buy} from "../modules/card.js";
+import {Card,list_goods} from "../modules/card.js";
 
 let goods = [
     {
@@ -200,7 +200,6 @@ function registration(){
 
 
 
-
 // distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
 // alert("Для покупки товаров надо авторизироваться!");
@@ -253,7 +252,7 @@ function registration(){
 // }
 
 
-// _____________________это сделанно__________________________
+// _____________________?__________________________
 // function distinguish_cheap_and_expensive_goods(list_price){
 //     // включаем анимацию самого дорого и самого дешевого товара
 //     document.querySelectorAll(".goods__card").forEach(card =>{

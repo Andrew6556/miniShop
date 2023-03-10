@@ -1,8 +1,9 @@
 "use strict";
 
-export let sum_total  = 0;
-export let num_buy    = 0;
 export let list_goods = [];
+
+let sum_total  = 0,
+    num_buy    = 0;
 export class Card{
     constructor(data,click_switch=false){
         this.click_switch = click_switch;
