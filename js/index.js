@@ -277,24 +277,26 @@ function registration(){
 
 
 // ____________________form_______________________
-// document.querySelector(".form").addEventListener('submit', (e) => { 
-//     // Отключаем событие по умолчанию 
-//     e.preventDefault(); 
-//     // Очищаем поля формы 
-//     e.target.reset(); 
-// });
+document.querySelector(".form").addEventListener('submit', (e) => { 
+    // Отключаем событие по умолчанию 
+    e.preventDefault(); 
+    // Очищаем поля формы 
+    e.target.reset(); 
+});
+document.querySelector(".navbar__add-product").addEventListener("click", () => modal_window_visibility());
 
-// function modal_window_visibility(visibility='visible', opacity='1'){
-//     // регулируем появление или удаление окна
-//     document.querySelector(".popup").style.visibility = visibility;
-//     document.querySelector(".popup").style.opacity    = opacity;
-// }
-// function get_form_data(){
-//     // получаем данные с формы
-//     let list_data = [];
-//     document.querySelectorAll(".form__input").forEach((div_input) => {
-//         list_data.push(div_input.value)
-//     });
+function modal_window_visibility(visibility='visible', opacity='1'){
+    // регулируем появление или удаление окна
+    console.log(1)
+    document.querySelector(".popup").style.visibility = visibility;
+    document.querySelector(".popup").style.opacity    = opacity;
+}
+function get_form_data(){
+    // получаем данные с формы
+    let list_data = [];
+    document.querySelectorAll(".form__input").forEach((div_input) => {
+        list_data.push(div_input.value)
+    });
     
-//     return list_data;
-// }
+    return list_data;
+}
