@@ -39,12 +39,11 @@ export class Card{
                                         </div>
                                         <div class="goods__animation-price"></div>`;
         if (this.click_switch){
-            wrapper.addEventListener("click", this.change_styles,{once:true})
-            wrapper.addEventListener("click", () =>{
+            this.wrapper.addEventListener("click", this.change_styles,{once:true})
+            this.wrapper.addEventListener("click", () =>{
                 document.querySelector(".navbar__num-buy").innerText = ++num_buy;
             },{once:true})
         }
-        console.log(this.wrapper)
     }
     change_styles(){
         // При клике меняем стили
@@ -52,7 +51,6 @@ export class Card{
         list_goods.push(this.outerHTML);
         sum_total += Number(this.querySelector(".goods__price-text").innerText);
         document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
-        console.log(sum_total)
     }
 
 
