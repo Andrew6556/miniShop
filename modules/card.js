@@ -1,10 +1,12 @@
 "use strict";
 
-
-export default class Card{
+export let sum_total  = 0;
+export let num_buy    = 0;
+export let list_goods = [];
+export class Card{
     constructor(data,click_switch=false){
-        this.cards = []
-        this.num_buy = 0
+        this.cards     = []
+        this.sum_total = 10;
         this.click_switch = click_switch;
         data.forEach(card_data => {
             let wrapper = document.createElement('div');
@@ -42,10 +44,9 @@ export default class Card{
             if (this.click_switch){
                 wrapper.addEventListener("click", this.change_styles,{once:true})
                 wrapper.addEventListener("click", () =>{
-                    document.querySelector(".navbar__num-buy").innerText = ++this.num_buy;
+                    document.querySelector(".navbar__num-buy").innerText = ++num_buy;
                 },{once:true})
             }
-            
             this.cards.push(wrapper)    
         });
         console.log(this.cards)
@@ -53,17 +54,10 @@ export default class Card{
     change_styles(){
         // При клике меняем стили
         this.querySelector(".goods__btn-hover").innerText = "Продано";
-        this.querySelector(".goods__btn-hover").disabled  = true;
-        // вынести вне класса 
-        // list_goods.push(div_product.outerHTML);
-        // sum_total += Number(this.querySelector(".goods__price-text").innerText);
-        document.querySelector(".navbar__sumTotal-price").innerText = 1;
-        console.log(1)
-        // console.log(this.wrapper.querySelector(".goods__card"))
-        
-    }
-    del_click(del_object){
-        del_object.removeEventListener( "click", (e));
+        list_goods.push(this.outerHTML);
+        sum_total += Number(this.querySelector(".goods__price-text").innerText);
+        document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
+        console.log(sum_total)
     }
 
 

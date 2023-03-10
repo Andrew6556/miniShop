@@ -1,7 +1,6 @@
 "use strict";
 
-import Card from "../modules/card.js";
-
+import {Card,list_goods,sum_total, num_buy} from "../modules/card.js";
 
 let goods = [
     {
@@ -123,16 +122,17 @@ card.cards.forEach(e =>{
 // card.distinguish_cheap_and_expensive_goods(card.get_max_and_min_price())
 
 
-let data_users = [{name:"admin",password:666}],
-    list_goods = [],
-    num_buy    = 0, 
-    // link_click = document.querySelector(".goods__card").onclick,
-    sum_total  = 0;
+let data_users = [{name:"admin",password:666}];
 
 let username,
     user_password;
 
-
+console.log(list_goods)
+document.querySelector(".navbar__basket-img").addEventListener("click", () =>{
+    // при клике передаем массив купленных товаров и передаем username 
+    localStorage.setItem("product", list_goods);
+    localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
+});
 document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
 document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
     if (authorization()){
@@ -168,7 +168,6 @@ function authorization(authorization_name=prompt("Введите ваше имя
                 // если пользователь админ то даем ему его полномочия
                     document.querySelector(".navbar__add-product").style.display = 'block';
                 }
-                // enable_or_disable_product_click(link_click);
             alert("Вы успешно авторизировались")
             return true
         }
@@ -176,7 +175,6 @@ function authorization(authorization_name=prompt("Введите ваше имя
     if (username == authorization_name && user_password == authorization_password){
         data_users.push({name:username,password:user_password});
         overwriting_styles_login()
-        // enable_or_disable_product_click(link_click)
         alert("Вы успешно авторизировались")
         return true
     }else{
@@ -208,17 +206,6 @@ function registration(){
 // alert("Для покупки товаров надо авторизироваться!");
 
 
-    
-// enable_or_disable_product_click()
-
-
-
-// function enable_or_disable_product_click(click=null){
-//     document.querySelectorAll(".goods__card").forEach(el =>{
-//         // делаем покупку товаров не возможной или наоборот
-//         el.onclick = click;
-//     })
-// }
 
 // function add_new_product(list_data){
 //     // добавление нового товара
@@ -264,21 +251,7 @@ function registration(){
 //     goodsDom.appendChild(productDiv);
 //     modal_window_visibility("hidden","0");
 // }
-// function change_styles(div_product){
-//     // При клике получаем обьект дочернего класса, где он был сделан и меняем стили
-//     div_product.querySelector(".goods__btn-hover").innerText = "Продано";
-//     div_product.querySelector(".goods__btn-hover").disabled = true;
-//     list_goods.push(div_product.outerHTML);
-//     sum_total += Number(div_product.querySelector(".goods__price-text").innerText);
-//     document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
-//     div_product.onclick = null;
-// }
 
-// _______________!____________________
-// function increase_number_purchases(){
-//     // При клике увеличиваем число покупок
-//     document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-// }
 
 // _____________________это сделанно__________________________
 // function distinguish_cheap_and_expensive_goods(list_price){
@@ -300,12 +273,6 @@ function registration(){
 //     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
 // }
 
-// ___________передача данных________
-// function data_transfer_on_click(){
-//     // при клике передаем массив купленных товаров и передаем username 
-//     localStorage.setItem("product", list_goods);
-//     localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
-// }
 
 
 
