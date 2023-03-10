@@ -2,8 +2,10 @@
 
 
 export default class Card{
-    constructor(data){
+    constructor(data,click_switch=false){
         this.cards = []
+        this.num_buy = 0
+        this.click_switch = click_switch;
         data.forEach(card_data => {
             let wrapper = document.createElement('div');
             wrapper.classList.add("goods__card");
@@ -37,12 +39,16 @@ export default class Card{
                                             <button class="goods__btn-hover">Купить</button>
                                         </div>
                                         <div class="goods__animation-price"></div>`;
-            wrapper.addEventListener("click", this.change_styles);
+            if (this.click_switch){
+                wrapper.addEventListener("click", this.change_styles,{once:true})
+                wrapper.addEventListener("click", () =>{
+                    document.querySelector(".navbar__num-buy").innerText = ++this.num_buy;
+                },{once:true})
+            }
+            
             this.cards.push(wrapper)    
         });
         console.log(this.cards)
-        // console.log(this.get_max_and_min_price())
-        // this.wrapper.addEventListener("click", this.change_styles);
     }
     change_styles(){
         // При клике меняем стили
@@ -54,8 +60,11 @@ export default class Card{
         document.querySelector(".navbar__sumTotal-price").innerText = 1;
         console.log(1)
         // console.log(this.wrapper.querySelector(".goods__card"))
+        
     }
-
+    del_click(del_object){
+        del_object.removeEventListener( "click", (e));
+    }
 
 
 
