@@ -5,51 +5,46 @@ export let num_buy    = 0;
 export let list_goods = [];
 export class Card{
     constructor(data,click_switch=false){
-        this.cards     = []
-        this.sum_total = 10;
         this.click_switch = click_switch;
-        data.forEach(card_data => {
-            let wrapper = document.createElement('div');
-            wrapper.classList.add("goods__card");
-            wrapper.innerHTML = `<h1 class="goods__title">${card_data.name}</h1>
+        this.wrapper      = document.createElement('div');
+        this.wrapper.classList.add("goods__card");
+        this.wrapper.innerHTML = `<h1 class="goods__title">${data.name}</h1>
                                         <div class="goods__inner">
                                             <div class="goods__wrap">
                                                 <div class="goods__item">
                                                     <h3 class="goods__item-title">Страна</h3>
-                                                    <p class="goods__item-text">${card_data.country}</p>
+                                                    <p class="goods__item-text">${data.country}</p>
                                                 </div>
                                                 <div class="goods__item">
                                                     <h3 class="goods__item-title">Гарантия</h3>
-                                                    <p class="goods__item-text">${card_data.guarantee}</p>
+                                                    <p class="goods__item-text">${data.guarantee}</p>
                                                 </div>
                                             </div>
                                             <div class="goods__wrap">
                                                 <div class="goods__item">
                                                     <h3 class="goods__item-title">Ширина экрана</h3>
-                                                    <p class="goods__item-text">${card_data.screen}</p>
+                                                    <p class="goods__item-text">${data.screen}</p>
                                                 </div>
                                                 <div class="goods__item">
                                                     <h3 class="goods__item-title">Память</h3>
-                                                    <p class="goods__item-text">${card_data.memory}</p>
+                                                    <p class="goods__item-text">${data.memory}</p>
                                                 </div>
                                             </div>
                                             <div class="goods__price">
-                                                Цена: <span class="goods__price-text">${card_data.price}</span>
+                                                Цена: <span class="goods__price-text">${data.price}</span>
                                             </div>
                                         </div>
                                         <div class="goods__hover-buy">
                                             <button class="goods__btn-hover">Купить</button>
                                         </div>
                                         <div class="goods__animation-price"></div>`;
-            if (this.click_switch){
-                wrapper.addEventListener("click", this.change_styles,{once:true})
-                wrapper.addEventListener("click", () =>{
-                    document.querySelector(".navbar__num-buy").innerText = ++num_buy;
-                },{once:true})
-            }
-            this.cards.push(wrapper)    
-        });
-        console.log(this.cards)
+        if (this.click_switch){
+            wrapper.addEventListener("click", this.change_styles,{once:true})
+            wrapper.addEventListener("click", () =>{
+                document.querySelector(".navbar__num-buy").innerText = ++num_buy;
+            },{once:true})
+        }
+        console.log(this.wrapper)
     }
     change_styles(){
         // При клике меняем стили

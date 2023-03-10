@@ -115,9 +115,9 @@ let goods = [
 ]
 let goodsDom = document.querySelector(".goods");
 
-let card = new Card(goods);
-card.cards.forEach(e =>{
-    goodsDom.appendChild(e)
+goods.forEach(e =>{
+    let card = new Card(e);
+    goodsDom.appendChild(card.wrapper)
 })
 // card.distinguish_cheap_and_expensive_goods(card.get_max_and_min_price())
 
@@ -127,22 +127,22 @@ let data_users = [{name:"admin",password:666}];
 let username,
     user_password;
 
-console.log(list_goods)
-document.querySelector(".navbar__basket-img").addEventListener("click", () =>{
-    // при клике передаем массив купленных товаров и передаем username 
-    localStorage.setItem("product", list_goods);
-    localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
-});
-document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
-document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
-    if (authorization()){
-        goodsDom.innerHTML = "";
-        let card = new Card(goods, true);
-        card.cards.forEach(e =>{
-            goodsDom.appendChild(e)
-        })
-    }
-});
+// console.log(list_goods)
+// document.querySelector(".navbar__basket-img").addEventListener("click", () =>{
+//     // при клике передаем массив купленных товаров и передаем username 
+//     localStorage.setItem("product", list_goods);
+//     localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
+// });
+// document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
+// document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
+//     if (authorization()){
+//         goodsDom.innerHTML = "";
+//         let card = new Card(goods, true);
+//         card.cards.forEach(e =>{
+//             goodsDom.appendChild(e)
+//         })
+//     }
+// });
 
 
 
