@@ -9,36 +9,39 @@ export class Card{
         this.click_switch = click_switch;
         this.wrapper      = document.createElement('div');
         this.wrapper.classList.add("goods__card");
-        this.wrapper.innerHTML = `<h1 class="goods__title">${data.name}</h1>
-                                        <div class="goods__inner">
-                                            <div class="goods__wrap">
-                                                <div class="goods__item">
-                                                    <h3 class="goods__item-title">Страна</h3>
-                                                    <p class="goods__item-text">${data.country}</p>
-                                                </div>
-                                                <div class="goods__item">
-                                                    <h3 class="goods__item-title">Гарантия</h3>
-                                                    <p class="goods__item-text">${data.guarantee}</p>
-                                                </div>
+        this.wrapper.innerHTML = `<div class="goods__card-img">
+                                    <img class="goods__img" src="#" alt="#">
+                                </div>
+                                <h1 class="goods__title">${data.name}</h1>
+                                    <div class="goods__inner">
+                                        <div class="goods__wrap">
+                                            <div class="goods__item">
+                                                <h3 class="goods__item-title">Страна</h3>
+                                                <p class="goods__item-text">${data.country}</p>
                                             </div>
-                                            <div class="goods__wrap">
-                                                <div class="goods__item">
-                                                    <h3 class="goods__item-title">Ширина экрана</h3>
-                                                    <p class="goods__item-text">${data.screen}</p>
-                                                </div>
-                                                <div class="goods__item">
-                                                    <h3 class="goods__item-title">Память</h3>
-                                                    <p class="goods__item-text">${data.memory}</p>
-                                                </div>
-                                            </div>
-                                            <div class="goods__price">
-                                                Цена: <span class="goods__price-text">${data.price}</span>
+                                            <div class="goods__item">
+                                                <h3 class="goods__item-title">Гарантия</h3>
+                                                <p class="goods__item-text">${data.guarantee}</p>
                                             </div>
                                         </div>
-                                        <div class="goods__hover-buy">
-                                            <button class="goods__btn-hover">Купить</button>
+                                        <div class="goods__wrap">
+                                            <div class="goods__item">
+                                                <h3 class="goods__item-title">Ширина экрана</h3>
+                                                <p class="goods__item-text">${data.screen}</p>
+                                            </div>
+                                            <div class="goods__item">
+                                                <h3 class="goods__item-title">Память</h3>
+                                                <p class="goods__item-text">${data.memory}</p>
+                                            </div>
                                         </div>
-                                        <div class="goods__animation-price"></div>`;
+                                        <div class="goods__price">
+                                            Цена: <span class="goods__price-text">${data.price}</span>
+                                        </div>
+                                    </div>
+                                    <div class="goods__hover-buy">
+                                        <button class="goods__btn-hover">Купить</button>
+                                    </div>
+                                    <div class="goods__animation-price"></div>`;
         if (this.click_switch){
             this.wrapper.addEventListener("click", this.change_styles,{once:true})
             this.wrapper.addEventListener("click", () =>{
@@ -46,6 +49,7 @@ export class Card{
             },{once:true})
         }
     }
+
     change_styles(){
         // При клике меняем стили
         this.querySelector(".goods__btn-hover").innerText = "Продано";
@@ -53,21 +57,6 @@ export class Card{
         sum_total += Number(this.querySelector(".goods__price-text").innerText);
         document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
     
     // _________анимация товаров с ценами_____________

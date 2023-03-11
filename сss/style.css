@@ -179,7 +179,10 @@ h1, h2, h3, h4, h5, h6 {
 .goods__card-img img{
     border-radius: 12px;
 }
-
+.goods__card-img{
+    visibility: hidden;
+    opacity: 0;
+}
 .goods__card{
     width: 330px;
     display: flex;
