@@ -64,8 +64,8 @@ export class Slider{
     }
     update(){
         this.slides.forEach(card =>{
-            card.style.opacity = 0;
+            card.style.display = 'none';
         })
-        this.slides[this.currentIndex].style.opacity = "1";
+        this.slides[this.currentIndex].style.display = 'flex';
     }
 }

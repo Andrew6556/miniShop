@@ -120,7 +120,7 @@ let goodsDom = document.querySelector(".header__content");
 let cards = [];
 
 goods.forEach(product=>{
-    let card = new Card(product)
+    let card = new Card(product,true)
     cards.push(card.wrapper)
 })
 
