@@ -14,11 +14,58 @@ export class Slider{
         this.wrapper.classList.add("slider")
         // контейнер слайдера
         this.slideWrapper = document.createElement("div")
-        this.slideWrapper.classList.add("slider-wrapper")
-        this.slides.forEach(slide => {
-            // добавдяем карточки в контейнер
+        this.slideWrapper.classList.add("slider__wrapper")
+        this.slides.forEach(card => {
+            let slide = document.createElement("div");
+            slide.classList.add("slide")
+            slide.appendChild(card)
+            // добавляем карточки в контейнер
             this.slideWrapper.appendChild(slide)
         });
+        
+
+        //создали кнопку для возращения пред. слайду
+        this.prevBtn = document.createElement("button")
+        this.prevBtn.classList.add("slider__btn")
+        this.prevBtn.innerText = "Prev";
+        this.prevBtn.addEventListener('click',this.prev)
+
+        this.nextBtn = document.createElement("button")
+        this.nextBtn.classList.add("slider__btn")
+        this.nextBtn.innerText = "Next";
+        this.nextBtn.addEventListener('click',this.next)
+
+        // создали обертку для навигаций
+        this.navigation = document.createElement("div")
+        this.navigation.classList.add("slider__navigation")
+        this.navigation.appendChild(this.prevBtn)
+        this.navigation.appendChild(this.nextBtn)
+
+        this.wrapper.appendChild(this.navigation)
         this.wrapper.appendChild(this.slideWrapper)
+
+        this.update()
+    }
+    prev = () => {
+        if (this.currentIndex === 0){
+            this.currentIndex = this.maxSlides - 1
+        }else{
+            this.currentIndex--
+        }
+        this.update()
+    }
+    next = () => {
+        if (this.currentIndex === this.maxSlides -1){
+            this.currentIndex = 0
+        }else{
+            this.currentIndex++
+        }
+        this.update()
+    }
+    update(){
+        this.slides.forEach(card =>{
+            card.style.opacity = 0;
+        })
+        this.slides[this.currentIndex].style.opacity = "1";
     }
 }

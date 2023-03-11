@@ -157,10 +157,6 @@ document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
 
 
 
-
-
-
-
 // ________________________войти в систему_____________________________
 function overwriting_styles_login(name=username){
     // переазапись стилей при авторизации

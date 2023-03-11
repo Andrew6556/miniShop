@@ -58,7 +58,11 @@ h1, h2, h3, h4, h5, h6 {
     font-size: inherit;
 }
 /* reset Settings */
-
+button{
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+}
 .container{
     max-width: 1200px;
     margin: 0 auto;
@@ -68,9 +72,6 @@ h1, h2, h3, h4, h5, h6 {
 .btn{
     width: 180px;
     padding: 10px 0;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    font-size: 16px;
-    font-weight: 500;
     color: white;
 }
 
@@ -170,12 +171,7 @@ h1, h2, h3, h4, h5, h6 {
     margin-top: 100px;
 }
 /* card */
-.slider-wrapper{
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-}
+
 .card__img img{
     border-radius: 12px;
 }
@@ -187,13 +183,12 @@ h1, h2, h3, h4, h5, h6 {
     width: 330px;
     display: flex;
     flex-direction: column;
-    position: relative;
     color: white;
+    position: relative;
     border: 2px solid #E27B30;
     border-radius: 15px;
     background: #2B2C2D;
     box-shadow: 4px 1px 5px 2px #0000009a;
-    margin: 10px 10px;
 }
 .card__animation-price{
     width: 100%;
@@ -295,6 +290,42 @@ h1, h2, h3, h4, h5, h6 {
 }
 .card__price-text{
     color: #E27B30;
+}
+/* slider */
+.slider__wrapper{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.slider__wrapper .slide{
+    /* position: absolute;
+    top: 0;
+    left: 0; */
+}
+.slider__navigation{
+    margin-bottom: 20px;
+    /* display: flex; */
+    /* justify-content: center; */
+}
+.slider__btn{
+    width: 100px;
+    border-radius: 15px;
+    padding: 10px 0px;
+    color: white;
+    background: #882334;
+    border: 2px solid #E27B30;
+    transition: all 500ms ease-in-out;
+}
+.slider__btn:hover{
+    color: black;
+    background: transparent;
+}
+/* .slider__btn: */
+.slider__btn:not(:last-child){
+    margin-right: 10px;
 }
 /* basket */
 .basket{
