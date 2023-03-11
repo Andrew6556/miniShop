@@ -120,17 +120,12 @@ let goodsDom = document.querySelector(".header__content");
 let cards = [];
 
 goods.forEach(product=>{
-    let card = new Card(product,true)
+    let card = new Card(product)
     cards.push(card.wrapper)
 })
 
 let slider = new Slider(cards) 
 goodsDom.appendChild(slider.wrapper)
-
-// goods.forEach(e =>{
-//     let card = new Card(e);
-//     goodsDom.appendChild(card.wrapper)
-// })
 
 // ______временно_отк____
 // card.distinguish_cheap_and_expensive_goods(card.get_max_and_min_price())
@@ -151,10 +146,12 @@ document.querySelector(".navbar__btn-registration").addEventListener("click", re
 document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
     if (authorization()){
         goodsDom.innerHTML = "";
-        goods.forEach(e =>{
-            let card = new Card(e, true);
-            goodsDom.appendChild(card.wrapper)
+        goods.forEach(product=>{
+            let card = new Card(product)
+            cards.push(card.wrapper)
         })
+        let slider = new Slider(cards);
+        goodsDom.appendChild(slider.wrapper)
     }
 });
 
@@ -212,35 +209,7 @@ function registration(){
 }
 
 
-
-
-// distinguish_cheap_and_expensive_goods(get_max_and_min_price())
-
 // alert("Для покупки товаров надо авторизироваться!");
-
-
-// _____________________?__________________________
-// function distinguish_cheap_and_expensive_goods(list_price){
-//     // включаем анимацию самого дорого и самого дешевого товара
-//     document.querySelectorAll(".goods__card").forEach(card =>{
-//         if (card.querySelector(".goods__price-text").innerHTML == list_price[1]){
-//             card.querySelector(".goods__animation-price").innerText = "Самый дорогой товар";
-//         }else if(card.querySelector(".goods__price-text").innerHTML == list_price[0]){
-//             card.querySelector(".goods__animation-price").innerText = "Самый дешевый товар";
-//         }
-//     })
-// }
-
-// function get_max_and_min_price(){
-//     // создаем массив из цен => возращаем макс цену и мин
-//     let list_price = Array.from(document.querySelectorAll(".goods__price-text")).map(elem => {
-//         return Number(elem.innerText)
-//     })
-//     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
-// }
-
-
-
 
 // ____________________form_______________________
 document.querySelector(".form").addEventListener('submit', (e) => { 
@@ -249,6 +218,7 @@ document.querySelector(".form").addEventListener('submit', (e) => {
     // Очищаем поля формы 
     e.target.reset(); 
 });
+// появление окна при клике на кнопку "Добавить товар"
 document.querySelector(".navbar__add-product").addEventListener("click", () => modal_window_visibility());
 
 document.querySelector(".form__btn").addEventListener("click", () =>{
