@@ -168,7 +168,7 @@ button{
 }
 /* header__top */
 .header__content{
-    margin-top: 100px;
+    margin-top: 170px;
 }
 /* card */
 
@@ -180,6 +180,7 @@ button{
     opacity: 0;
 }
 .card{
+    height: 356px;
     width: 330px;
     display: flex;
     flex-direction: column;
@@ -293,31 +294,30 @@ button{
     color: #E27B30;
 }
 /* slider */
+.slider{
+    display: flex;
+    flex-direction: column-reverse;
+}
 .slider__wrapper{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    position: relative;
 }
 
-.slider__wrapper .slide{
-    position: absolute;
-    top: 0;
-    left: 0;
-}
+
 .slider__navigation{
-    /* margin-bottom: 20px; */
-    /* display: flex; */
-    /* justify-content: center; */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
 }
 .slider__btn{
     width: 100px;
-    border-radius: 15px;
+    border-radius: 10px;
     padding: 10px 0px;
     color: white;
     background: #882334;
-    border: 2px solid #E27B30;
+    border: 1px solid #E27B30;
     transition: all 500ms ease-in-out;
 }
 .slider__btn:hover{
@@ -421,6 +421,6 @@ button{
         margin-bottom: 15px;
     }
     .header__content{
-        margin-top: 130px;
+        margin-top: 200px;
     }
 }
