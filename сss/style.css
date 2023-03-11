@@ -169,21 +169,21 @@ h1, h2, h3, h4, h5, h6 {
 .header__content{
     margin-top: 100px;
 }
-/* goods */
-.goods{
+/* card */
+.slider-wrapper{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
 }
-.goods__card-img img{
+.card__img img{
     border-radius: 12px;
 }
-.goods__card-img{
+.card__img{
     visibility: hidden;
     opacity: 0;
 }
-.goods__card{
+.card{
     width: 330px;
     display: flex;
     flex-direction: column;
@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
     box-shadow: 4px 1px 5px 2px #0000009a;
     margin: 10px 10px;
 }
-.goods__animation-price{
+.card__animation-price{
     width: 100%;
     height: 100%;
     font-size: 30px;
@@ -218,15 +218,15 @@ h1, h2, h3, h4, h5, h6 {
         font-size: 26px;
     }
 }
-.goods__card:hover .goods__animation-price{
+.card:hover .card__animation-price{
     visibility: hidden;
     opacity: 0;
 }
-.goods__card:hover .goods__hover-buy{
+.card:hover .card__hover-buy{
     visibility: visible;
     opacity: 1;
 }
-.goods__hover-buy{
+.card__hover-buy{
     transition: visibility 1s, opacity 1s ease;
     visibility: hidden;
     opacity: 0;
@@ -240,30 +240,30 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 15px;
     
 }
-.goods__btn-hover{
+.card__btn-hover{
     color: white;
     font-size: 30px;
 }
-.goods__inner {
+.card__inner {
     padding: 0 23px;
 }
-.goods__wrap{
+.card__wrap{
     display: flex;
     justify-content: space-between;
     margin-top: 10px;
 }
-.goods__item{
+.card__item{
     flex-grow: 1;
 }
-.goods__item:nth-child(1){
+.card__item:nth-child(1){
     margin-right:15px;
 }
-.goods__title {
+.card__title {
     padding: 12px 15px;
     font-size: 23px;
     text-align: center;
 }
-.goods__title::after{
+.card__title::after{
     content: "";
     margin: 10px auto 0 auto;
     display: block;
@@ -271,12 +271,12 @@ h1, h2, h3, h4, h5, h6 {
     height: 2px;
     background: #E27B30;
 }
-.goods__item-title{
+.card__item-title{
     font-size: 20px;
     font-weight: 300;
     margin-bottom: 10px;
 }
-.goods__item-text{
+.card__item-text{
     display: flex;
     align-items: center;
     justify-content: center;
@@ -288,12 +288,12 @@ h1, h2, h3, h4, h5, h6 {
     margin-bottom: 10px;
     padding: 0 20px;
 }
-.goods__price{
+.card__price{
     text-align: center;
     margin: 12px 0;
     font-size: 28px;
 }
-.goods__price-text{
+.card__price-text{
     color: #E27B30;
 }
 /* basket */

@@ -1,6 +1,7 @@
 "use strict";
 
 import {Card,list_goods} from "../modules/card.js";
+import {Slider} from "../modules/slider.js";
 
 let goods = [
     {
@@ -113,11 +114,24 @@ let goods = [
         price:25000
     },
 ]
-let goodsDom = document.querySelector(".goods");
-goods.forEach(e =>{
-    let card = new Card(e);
-    goodsDom.appendChild(card.wrapper)
+
+let goodsDom = document.querySelector(".header__content");
+
+let cards = [];
+
+goods.forEach(product=>{
+    let card = new Card(product,true)
+    cards.push(card.wrapper)
 })
+
+let slider = new Slider(cards) 
+goodsDom.appendChild(slider.wrapper)
+
+// goods.forEach(e =>{
+//     let card = new Card(e);
+//     goodsDom.appendChild(card.wrapper)
+// })
+
 // ______временно_отк____
 // card.distinguish_cheap_and_expensive_goods(card.get_max_and_min_price())
 
@@ -240,9 +254,9 @@ document.querySelector(".navbar__add-product").addEventListener("click", () => m
 document.querySelector(".form__btn").addEventListener("click", () =>{
     let card = new Card(get_form_data()[0],true);
     goodsDom.appendChild(card.wrapper);
-    card.wrapper.querySelector(".goods__card-img").style.visibility = 'visible';
-    card.wrapper.querySelector(".goods__card-img").style.opacity    = "1";
-    card.wrapper.querySelector(".goods__img").src = get_form_data()[0].url;
+    card.wrapper.querySelector(".card__img").style.visibility = 'visible';
+    card.wrapper.querySelector(".card__img").style.opacity    = "1";
+    card.wrapper.querySelector(".card__img-item").src = get_form_data()[0].url;
     modal_window_visibility("hidden","0") 
 });
 
