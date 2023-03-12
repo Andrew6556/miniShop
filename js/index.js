@@ -128,9 +128,27 @@ let slider = new Slider(cards)
 goodsDom.appendChild(slider.wrapper)
 
 // ______временно_отк____
-// card.distinguish_cheap_and_expensive_goods(card.get_max_and_min_price())
+distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
-
+// _________анимация товаров с ценами_____________
+function distinguish_cheap_and_expensive_goods(list_price){
+    // включаем анимацию самого дорого и самого дешевого товара
+    document.querySelectorAll(".card").forEach(card =>{
+        if (card.querySelector(".card__price-text").innerHTML == list_price[1]){
+            card.querySelector(".card__animation-price").innerText = "Самый дорогой товар";
+        }else if(card.querySelector(".card__price-text").innerHTML == list_price[0]){
+            card.querySelector(".card__animation-price").innerText = "Самый дешевый товар";
+        }
+    })
+}
+function get_max_and_min_price(){
+    // создаем массив из цен => возращаем макс цену и мин
+    let list_price = Array.from(document.querySelectorAll(".card__price-text")).map(elem => {
+        return Number(elem.innerText)
+    })
+    console.log(list_price)
+    return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
+}
 let data_users = [{name:"admin",password:666}];
 
 let username,

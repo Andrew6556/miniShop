@@ -49,32 +49,11 @@ export class Card{
             },{once:true})
         }
     }
-
     change_styles(){
         // При клике меняем стили
         this.querySelector(".card__btn-hover").innerText = "Продано";
         list_goods.push(this.outerHTML);
         sum_total += Number(this.querySelector(".card__price-text").innerText);
         document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
-    }
-
-    
-    // _________анимация товаров с ценами_____________
-    distinguish_cheap_and_expensive_goods(list_price){
-        // включаем анимацию самого дорого и самого дешевого товара
-        document.querySelectorAll(".card").forEach(card =>{
-            if (card.querySelector(".card__price-text").innerHTML == list_price[1]){
-                card.querySelector(".card__animation-price").innerText = "Самый дорогой товар";
-            }else if(card.querySelector(".card__price-text").innerHTML == list_price[0]){
-                card.querySelector(".card__animation-price").innerText = "Самый дешевый товар";
-            }
-        })
-    }
-    get_max_and_min_price(){
-        // создаем массив из цен => возращаем макс цену и мин
-        let list_price = Array.from(document.querySelectorAll(".card__price-text")).map(elem => {
-            return Number(elem.innerText)
-        })
-        return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
     }
 }
