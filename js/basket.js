@@ -1,7 +1,7 @@
 "use strict";
 
 let div_product = localStorage.getItem("product"),
-    div_basket = document.querySelector(".header__content");
+    div_basket = document.querySelector(".goods");
 
 div_basket.innerHTML = div_product;
 

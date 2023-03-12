@@ -19,14 +19,13 @@ export class Slider{
             // добавляем карточки в контейнер
             this.slideWrapper.appendChild(card)
         });
-        
-
         //создали кнопку для возращения пред. слайду
         this.prevBtn = document.createElement("button")
         this.prevBtn.classList.add("slider__btn")
         this.prevBtn.innerText = "Prev";
         this.prevBtn.addEventListener('click',this.prev)
 
+        //создали кнопку для возращения next. слайду
         this.nextBtn = document.createElement("button")
         this.nextBtn.classList.add("slider__btn")
         this.nextBtn.innerText = "Next";

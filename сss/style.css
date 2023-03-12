@@ -409,8 +409,15 @@ button{
     font-weight: 500;
     border-radius: 100px;
 }
-
-
+/* goods */
+.goods{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+.goods .card{
+    margin: 10px;
+}
 
 /* adaptive */
 @media screen and (max-width: 720px){
