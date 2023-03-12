@@ -16,11 +16,8 @@ export class Slider{
         this.slideWrapper = document.createElement("div")
         this.slideWrapper.classList.add("slider__wrapper")
         this.slides.forEach(card => {
-            let slide = document.createElement("div");
-            slide.classList.add("slide")
-            slide.appendChild(card)
             // добавляем карточки в контейнер
-            this.slideWrapper.appendChild(slide)
+            this.slideWrapper.appendChild(card)
         });
         
 

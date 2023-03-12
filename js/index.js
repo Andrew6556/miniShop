@@ -120,7 +120,7 @@ let goodsDom = document.querySelector(".header__content");
 let cards = [];
 
 goods.forEach(product=>{
-    let card = new Card(product,true)
+    let card = new Card(product)
     cards.push(card.wrapper)
 })
 
@@ -146,9 +146,9 @@ function get_max_and_min_price(){
     let list_price = Array.from(document.querySelectorAll(".card__price-text")).map(elem => {
         return Number(elem.innerText)
     })
-    console.log(list_price)
     return [Math.min.apply(null,list_price),Math.max.apply(null,list_price)]
 }
+
 let data_users = [{name:"admin",password:666}];
 
 let username,
@@ -164,8 +164,9 @@ document.querySelector(".navbar__btn-registration").addEventListener("click", re
 document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
     if (authorization()){
         goodsDom.innerHTML = "";
+        cards.length = 0;
         goods.forEach(product=>{
-            let card = new Card(product)
+            let card = new Card(product,true);
             cards.push(card.wrapper)
         })
         let slider = new Slider(cards);

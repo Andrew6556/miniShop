@@ -180,7 +180,7 @@ button{
     opacity: 0;
 }
 .card{
-    height: 356px;
+    /* height: 356px; */
     width: 330px;
     display: flex;
     flex-direction: column;
