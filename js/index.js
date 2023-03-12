@@ -237,11 +237,20 @@ document.querySelector(".form").addEventListener('submit', (e) => {
 document.querySelector(".navbar__add-product").addEventListener("click", () => modal_window_visibility());
 
 document.querySelector(".form__btn").addEventListener("click", () =>{
+    // add new card
+    goodsDom.innerHTML = "";
+    cards.length = 0;
     let card = new Card(get_form_data()[0],true);
-    goodsDom.appendChild(card.wrapper);
     card.wrapper.querySelector(".card__img").style.visibility = 'visible';
     card.wrapper.querySelector(".card__img").style.opacity    = "1";
     card.wrapper.querySelector(".card__img-item").src = get_form_data()[0].url;
+    cards.push(card.wrapper);
+    goods.forEach(product=>{
+        let card = new Card(product,true)
+        cards.push(card.wrapper)
+    })
+    let slider = new Slider(cards) 
+    goodsDom.appendChild(slider.wrapper)
     modal_window_visibility("hidden","0") 
 });
 
