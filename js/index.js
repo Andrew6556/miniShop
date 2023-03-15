@@ -1,7 +1,10 @@
 "use strict";
 
-import {Card,list_goods} from "../modules/card.js";
+import {Card} from "../modules/card.js";
 import {Slider} from "../modules/slider.js";
+import Header from "../modules/header.js";
+import basket from "../modules/basket.js";
+
 
 let goods = [
     {
@@ -117,15 +120,15 @@ let goods = [
 
 let goodsDom = document.querySelector(".header__content");
 
-let cards = [];
+// let cards = [];
 
-goods.forEach(product=>{
-    let card = new Card(product)
-    cards.push(card.wrapper)
-})
+// goods.forEach(product=>{
+//     let card = new Card(product)
+//     cards.push(card.wrapper)
+// })
 
-let slider = new Slider(cards) 
-goodsDom.appendChild(slider.wrapper)
+// let slider = new Slider(cards) 
+// goodsDom.appendChild(slider.wrapper)
 
 // ______временно_отк____
 distinguish_cheap_and_expensive_goods(get_max_and_min_price())
@@ -154,12 +157,7 @@ let data_users = [{name:"admin",password:666}];
 let username,
     user_password;
 
-// console.log(list_goods)
-document.querySelector(".navbar__basket-img").addEventListener("click", () =>{
-    // при клике передаем массив купленных товаров и передаем username 
-    localStorage.setItem("product", list_goods);
-    localStorage.setItem("username",document.querySelector(".navbar__username").innerText);
-});
+
 document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
 document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
     if (authorization()){

@@ -1,6 +1,5 @@
 "use strict";
 
-export let list_goods = [];
 
 let sum_total  = 0,
     num_buy    = 0;
