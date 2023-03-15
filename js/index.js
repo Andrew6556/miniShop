@@ -3,7 +3,7 @@
 import {Card} from "../modules/card.js";
 import {Slider} from "../modules/slider.js";
 import Header from "../modules/header.js";
-import basket from "../modules/basket.js";
+import Basket from "../modules/basket.js";
 
 
 let goods = [
@@ -120,6 +120,10 @@ let goods = [
 
 let goodsDom = document.querySelector(".header__content");
 
+let header = new Header();
+
+document.querySelector(".wrapper").appendChild(header.wrapper)
+
 // let cards = [];
 
 // goods.forEach(product=>{
@@ -158,19 +162,19 @@ let username,
     user_password;
 
 
-document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
-document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
-    if (authorization()){
-        goodsDom.innerHTML = "";
-        cards.length = 0;
-        goods.forEach(product=>{
-            let card = new Card(product,true);
-            cards.push(card.wrapper)
-        })
-        let slider = new Slider(cards);
-        goodsDom.appendChild(slider.wrapper)
-    }
-});
+// document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
+// document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
+//     if (authorization()){
+//         goodsDom.innerHTML = "";
+//         cards.length = 0;
+//         goods.forEach(product=>{
+//             let card = new Card(product,true);
+//             cards.push(card.wrapper)
+//         })
+//         let slider = new Slider(cards);
+//         goodsDom.appendChild(slider.wrapper)
+//     }
+// });
 
 
 
