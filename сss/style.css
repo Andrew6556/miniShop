@@ -330,8 +330,20 @@ button{
 }
 /* basket */
 .basket{
+    margin-top: 200px;
+}
+.basket__title{
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.basket__content{
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
+}
+.basket__content .card{
+    margin: 20px;
 }
 /* popup */
 .popup {

@@ -35,8 +35,6 @@ export default class Header{
                         </div>
                     </div>
                 </div>
-                <div class="header__content container">
-                    
-                </div>`;
+                <div class="header__content container"></div>`;
     }
 }

@@ -118,23 +118,26 @@ let goods = [
     },
 ]
 
-let goodsDom = document.querySelector(".header__content");
 
-let header = new Header();
+let header = new Header(),
+    basket = new Basket();
 
+header.wrapper.appendChild(basket.wrapper)
 document.querySelector(".wrapper").appendChild(header.wrapper)
 
-// let cards = [];
+let goodsDom = document.querySelector(".header__content");
 
-// goods.forEach(product=>{
-//     let card = new Card(product)
-//     cards.push(card.wrapper)
-// })
+let cards = [];
 
-// let slider = new Slider(cards) 
-// goodsDom.appendChild(slider.wrapper)
+goods.forEach(product=>{
+    let card = new Card(product)
+    cards.push(card.wrapper)
+})
 
-// ______временно_отк____
+let slider = new Slider(cards); 
+goodsDom.appendChild(slider.wrapper)
+
+
 distinguish_cheap_and_expensive_goods(get_max_and_min_price())
 
 // _________анимация товаров с ценами_____________
@@ -162,19 +165,20 @@ let username,
     user_password;
 
 
-// document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
-// document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
-//     if (authorization()){
-//         goodsDom.innerHTML = "";
-//         cards.length = 0;
-//         goods.forEach(product=>{
-//             let card = new Card(product,true);
-//             cards.push(card.wrapper)
-//         })
-//         let slider = new Slider(cards);
-//         goodsDom.appendChild(slider.wrapper)
-//     }
-// });
+document.querySelector(".navbar__btn-registration").addEventListener("click", registration);
+document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
+    if (authorization()){
+        goodsDom.innerHTML = "";
+        cards.length = 0;
+        goods.forEach(product=>{
+            let card = new Card(product,true);
+            cards.push(card.wrapper)
+        })
+        let slider = new Slider(cards);
+        goodsDom.appendChild(slider.wrapper)
+        distinguish_cheap_and_expensive_goods(get_max_and_min_price())
+    }
+});
 
 
 

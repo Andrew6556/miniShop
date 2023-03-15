@@ -7,6 +7,7 @@ export default class basket{
 
         this.wrapperTitle = document.createElement("div");
         this.wrapperTitle.classList.add("basket__title")
+        this.wrapperTitle.innerText = "Ваши купленные товары";
 
         this.wrapperContent = document.createElement("div");
         this.wrapperContent.classList.add("basket__content")

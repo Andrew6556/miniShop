@@ -48,11 +48,17 @@ export class Card{
             },{once:true})
         }
     }
-    change_styles(){
+    change_styles = () =>{
         // При клике меняем стили
-        this.querySelector(".card__btn-hover").innerText = "Продано";
-        list_goods.push(this.outerHTML);
-        sum_total += Number(this.querySelector(".card__price-text").innerText);
+        this.wrapper.querySelector(".card__btn-hover").innerText = "Продано";
+        sum_total += Number(this.wrapper.querySelector(".card__price-text").innerText);
         document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
+        this.adding_to_cart(this.wrapper)
+    }
+    adding_to_cart(card){
+        let div_card = document.createElement("div")
+        div_card.classList.add("card")
+        div_card.innerHTML = card.innerHTML
+        document.querySelector(".basket__content").appendChild(div_card)
     }
 }
