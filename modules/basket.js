@@ -1,6 +1,6 @@
 "use strict"
 
-export default class basket{
+export default class Basket{
     constructor(){
         this.wrapper = document.createElement("div")
         this.wrapper.classList.add("basket")
