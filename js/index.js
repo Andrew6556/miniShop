@@ -172,6 +172,9 @@ document.querySelector(".navbar__btn-signIn").addEventListener("click", () =>{
         cards.length = 0;
         goods.forEach(product=>{
             let card = new Card(product,true);
+            card.wrapper.addEventListener("click",() =>{
+                basket.adding_to_cart(card.wrapper)
+            },{once:true})
             cards.push(card.wrapper)
         })
         let slider = new Slider(cards);
@@ -247,12 +250,22 @@ document.querySelector(".form__btn").addEventListener("click", () =>{
     goodsDom.innerHTML = "";
     cards.length = 0;
     let card = new Card(get_form_data()[0],true);
+
     card.wrapper.querySelector(".card__img").style.visibility = 'visible';
     card.wrapper.querySelector(".card__img").style.opacity    = "1";
     card.wrapper.querySelector(".card__img-item").src = get_form_data()[0].url;
+
+    card.wrapper.addEventListener("click",() =>{
+        basket.adding_to_cart(card.wrapper)
+    },{once:true})
+
     cards.push(card.wrapper);
+    
     goods.forEach(product=>{
         let card = new Card(product,true)
+        card.wrapper.addEventListener("click",() =>{
+            basket.adding_to_cart(card.wrapper)
+        },{once:true})
         cards.push(card.wrapper)
     })
     let slider = new Slider(cards) 

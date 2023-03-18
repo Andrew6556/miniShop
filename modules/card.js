@@ -1,8 +1,9 @@
 "use strict";
 
+let sum_total = 0,
+    num_buy   = 0;
 
-let sum_total  = 0,
-    num_buy    = 0;
+    
 export class Card{
     constructor(data,click_switch=false){
         this.click_switch = click_switch;
@@ -53,12 +54,5 @@ export class Card{
         this.wrapper.querySelector(".card__btn-hover").innerText = "Продано";
         sum_total += Number(this.wrapper.querySelector(".card__price-text").innerText);
         document.querySelector(".navbar__sumTotal-price").innerText = sum_total;
-        this.adding_to_cart(this.wrapper)
-    }
-    adding_to_cart(card){
-        let div_card = document.createElement("div")
-        div_card.classList.add("card")
-        div_card.innerHTML = card.innerHTML
-        document.querySelector(".basket__content").appendChild(div_card)
     }
 }

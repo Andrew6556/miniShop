@@ -15,4 +15,11 @@ export default class Basket{
         this.wrapper.appendChild(this.wrapperTitle)
         this.wrapper.appendChild(this.wrapperContent)
     }
+    adding_to_cart(card){
+        console.log(1)
+        let div_card = document.createElement("div")
+        div_card.classList.add("card")
+        div_card.innerHTML = card.innerHTML
+        document.querySelector(".basket__content").appendChild(div_card)
+    }
 }
